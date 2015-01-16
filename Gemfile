@@ -48,3 +48,6 @@ gem 'spring',        group: :development
 
 # Bootstrap
 gem 'bootstrap-sass'
+
+# Devise
+gem 'devise', github: 'plataformatec/devise'
