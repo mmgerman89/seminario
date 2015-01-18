@@ -1,4 +1,4 @@
-
+<%= devise_error_messages! %>
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4><%= t('.sign_up', :default => "Registro") %></h4>
@@ -8,6 +8,14 @@
       <div class="form-group">
         <%= f.label "E-mail" %>
         <%= f.email_field :email, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "Nombre" %>
+        <%= f.text_field :first_name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "Apellido" %>
+        <%= f.text_field :last_name, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label "Contraseña" %><br />
