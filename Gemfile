@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
 group :development, :test do
-  gem 'sqlite3'
+  gem 'sqlite3', '1.3.10'
   gem 'rspec-rails' 
 end
 # PG para producción
@@ -47,7 +47,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 # Bootstrap
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '3.3.1.0'
 
 # Devise
-gem 'devise', github: 'plataformatec/devise'
+gem 'devise', '3.4.1', github: 'plataformatec/devise'
