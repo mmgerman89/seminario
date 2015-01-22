@@ -1,9 +1,22 @@
 
-<div class="jumbotron">
-	<h1>¡Bienvenido a RestOnLine!</h1>
-	<p>RestOnLine es una nueva <b>red social</b> para encontrar los mejores restaurantes y bares cerca
-		tuyo, hacer pedidos on-line, realizar reservas, compartir con tus amigos, y mucho más!
-		Creá tu cuenta y probá la mejor manera de ir a un restaurante.</p>
-	<p><a class="btn btn-primary btn-lg" href="#" role="button">Iniciar Sesión</a></p>
-</div>
-
+<% if user_signed_in? %>
+	<div class="page-header">
+	  <h1>Bienvenido, <%= current_user.first_name %>!</h1>
+	</div>
+	<% if current_user.microposts.any? %>
+		<h3>Muro (<%= current_user.microposts.count %>)</h3>
+		
+		<%= render 'micropost/micropost' %>
+		
+	<% else %>
+		<p>No has publicado nada todavía. Animate!</p>
+	<% end %>
+<% else %>
+	<div class="jumbotron">
+		<h1>¡Bienvenido a RestOnLine!</h1>
+		<p>RestOnLine es una nueva <b>red social</b> para encontrar los mejores restaurantes y bares cerca
+			tuyo, hacer pedidos on-line, realizar reservas, compartir con tus amigos, y mucho más!
+			Creá tu cuenta y probá la mejor manera de ir a un restaurante.</p>
+		<%= link_to "Iniciar Sesión", new_user_session_path, class: "btn btn-primary btn-lg" %>
+	</div>
+<% end %>
