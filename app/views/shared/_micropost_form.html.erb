@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<%= form_for(@micropost) do |f| %>
+			<div class="form-group">
+				<%= f.text_field :content, class: "form-control", placeholder: "¿Qué estas pensando?",
+									autocomplete: "off" %>
+			</div>
+			<div align="right">
+				<%= f.submit "Publicar", class:"btn btn-primary" %>
+			</div>
+		<% end %>
+ 	</div>
+</div>

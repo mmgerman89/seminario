@@ -1,8 +1,27 @@
-<% current_user.microposts.all.each do |m| %>
+
+<% Micropost.all.each do |m| %>
 	<div class="list-group">
-	  <a href="#" class="list-group-item active">
-	    <h4 class="list-group-item-heading"><%= m.content %></h4>
-	    <p class="list-group-item-text">Hace <%= time_ago_in_words(m.created_at) %></p>
-	  </a>
+	  <li class="list-group-item active">
+	  	<div class="media">
+		  <div class="media-left">
+		    <a href="#">
+		      <img class="media-object" src="/img/<%= m.user.id %>.jpg" alt="Ned Stark">
+		    </a>
+		  </div>
+		  <div class="media-body">
+		    <h4 class="media-heading"><%= m.user.first_name %>:</h4>
+		    <p><%= m.content %></p>
+		    <p style="font-size: 0.7em"><%= m.created_at %></p>
+				
+		  </div>
+		  <% if current_user == m.user %>
+					<div align="right">
+						<%= link_to "x", m, method: :delete, class: "btn btn-danger",
+													data: {confirm: "¿Estás seguro?"} %>
+					</div>
+				<% end %>
+		</div>
+		    
+	  </li>
 	</div>
 <% end %>

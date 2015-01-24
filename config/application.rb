@@ -22,5 +22,13 @@ module Seminario
     
     # Devise
     config.assets.initialize_on_precompile = false
+    
+    # Date
+    # ----------------------------
+    Date::DATE_FORMATS[:default] = "%e/%B/%Y" 
+    
+    # DateTime / Time
+    # ----------------------------
+    Time::DATE_FORMATS[:default] = "%d/%m/%Y %I:%M %p" 
   end
 end
