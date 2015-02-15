@@ -11,7 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121191031) do
+ActiveRecord::Schema.define(version: 20150215013613) do
+
+  create_table "branches", force: true do |t|
+    t.string   "name"
+    t.integer  "commerce_id"
+    t.string   "address"
+    t.string   "phone"
+    t.integer  "type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.integer  "province_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "commerce_categories", force: true do |t|
+    t.integer  "commerce_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "commerces", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -21,6 +64,19 @@ ActiveRecord::Schema.define(version: 20150121191031) do
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+
+  create_table "provinces", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "country_id"
+  end
+
+  create_table "types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
