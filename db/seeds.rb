@@ -68,11 +68,24 @@ types = Type.create([
   { name: 'Sucursal'}
 ])
 
+
+# Datos de ejeplo
+
 commerce = Commerce.create([
-  { name: 'Mak Lucas' }
+  { name: 'Mak Lucas', user: User.first }
 ])
 
 branches = Branch.create([
   { name: '3C', address: 'Virrey Toledo 1354', phone: '(0387) 4215239',
+    type: Type.find_by_name('Principal'),
     commerce: Commerce.find_by_name('Mak Lucas') }
+])
+
+categories = CommerceCategory.create([
+  { commerce: Commerce.find_by_name('Mak Lucas'), category: Category.find_by_name('Restaurante') },
+  { commerce: Commerce.find_by_name('Mak Lucas'), category: Category.find_by_name('Argentina') },
+])
+
+admins = Administrator.create([
+  { user: User.first, branch: Branch.find_by_name('3C')}
 ])
