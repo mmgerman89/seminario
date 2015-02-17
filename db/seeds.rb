@@ -72,20 +72,31 @@ types = Type.create([
 # Datos de ejeplo
 
 commerce = Commerce.create([
-  { name: 'Mak Lucas', user: User.first }
+  { name: 'Mak Lucas', user: User.first },
+  { name: 'El Nacional', user: User.second }
 ])
 
 branches = Branch.create([
   { name: '3C', address: 'Virrey Toledo 1354', phone: '(0387) 4215239',
     type: Type.find_by_name('Principal'),
-    commerce: Commerce.find_by_name('Mak Lucas') }
+    commerce: Commerce.find_by_name('Mak Lucas') },
+  { name: 'El Tribuno', address: 'Barrio el Tribuno', phone: '(0387) 4225588',
+    type: Type.find_by_name('Sucursal'),
+    commerce: Commerce.find_by_name('Mak Lucas') },
+  { name: 'El Nacional I', address: 'Virrey Toledo 256', phone: '(0387) 4336699',
+    type: Type.find_by_name('Principal'),
+    commerce: Commerce.find_by_name('El Nacional') }
 ])
 
 categories = CommerceCategory.create([
   { commerce: Commerce.find_by_name('Mak Lucas'), category: Category.find_by_name('Restaurante') },
   { commerce: Commerce.find_by_name('Mak Lucas'), category: Category.find_by_name('Argentina') },
+  { commerce: Commerce.find_by_name('El Nacional'), category: Category.find_by_name('Restaurante') },
+  { commerce: Commerce.find_by_name('El Nacional'), category: Category.find_by_name('Argentina') }
 ])
 
 admins = Administrator.create([
-  { user: User.first, branch: Branch.find_by_name('3C')}
+  { user: User.first, branch: Branch.find_by_name('3C')},
+  { user: User.first, branch: Branch.find_by_name('El Tribuno')},
+  { user: User.second, branch: Branch.find_by_name('El Nacional I')}
 ])
