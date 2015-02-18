@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
     @micropost = current_user.microposts.build if user_signed_in?
   end
 
-  def help
+  def commerces
+    @commerces = Commerce.all
   end
 end
