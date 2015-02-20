@@ -7,4 +7,6 @@ class Commerce < ActiveRecord::Base
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }
   validates :user, presence: true
+  
+  accepts_nested_attributes_for :branches
 end

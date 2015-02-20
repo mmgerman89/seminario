@@ -9,10 +9,10 @@
 		<div class="collapse navbar-collapse", id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<%= nav_link "Inicio", 		root_path %>
+				<%= nav_link "Comercios", 	commerces_path %>
 				<%= nav_link "Ayuda", 		help_path %>
 				<%= nav_link "Acerca de", 	about_path %>
 				<%= nav_link "Contacto", 	contact_path %>
-				<%= nav_link "Comercios", 	commerces_path %>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<% if user_signed_in? %>

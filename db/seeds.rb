@@ -78,13 +78,13 @@ commerce = Commerce.create([
 
 branches = Branch.create([
   { name: '3C', address: 'Virrey Toledo 1354', phone: '(0387) 4215239',
-    type: Type.find_by_name('Principal'),
+    type: Type.find_by_name('Principal'), city: City.find_by_name('Salta'),
     commerce: Commerce.find_by_name('Mak Lucas') },
   { name: 'El Tribuno', address: 'Barrio el Tribuno', phone: '(0387) 4225588',
-    type: Type.find_by_name('Sucursal'),
+    type: Type.find_by_name('Sucursal'), city: City.find_by_name('Salta'),
     commerce: Commerce.find_by_name('Mak Lucas') },
   { name: 'El Nacional I', address: 'Virrey Toledo 256', phone: '(0387) 4336699',
-    type: Type.find_by_name('Principal'),
+    type: Type.find_by_name('Principal'), city: City.find_by_name('Salta'),
     commerce: Commerce.find_by_name('El Nacional') }
 ])
 
