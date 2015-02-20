@@ -15,16 +15,26 @@
 		<div class="panel-heading">Casa Central</div>
 		<div class="panel-body">
 			<%= f.fields_for :branches do |field| %>
-				<%= field.label "Nombre de la Sucursal" %>
-	        	<%= field.text_field :name, class: "form-control" %>
-				<%= field.label "Dirección" %>
-	        	<%= field.text_field :address, class: "form-control" %>
-				<%= field.label "Teléfono" %>
-	        	<%= field.text_field :phone, class: "form-control" %>
-				<%= field.label "Tipo" %>
-	        	<%= field.collection_select :type, Type.all, :id, :name %>
-				<%= field.label "Ciudad" %>
-	        	<%= field.collection_select :city, City.all, :id, :name %>
+	        	<div class="form-group">
+					<%= field.label "Nombre de la Sucursal" %>
+		        	<%= field.text_field :name, class: "form-control" %>
+	        	</div>
+	        	<div class="form-group">
+					<%= field.label "Dirección" %>
+		        	<%= field.text_field :address, class: "form-control" %>
+	        	</div>
+	        	<div class="form-group">
+					<%= field.label "Teléfono" %>
+		        	<%= field.text_field :phone, class: "form-control" %>
+	        	</div>
+	        	<div class="form-group">
+					<%= field.label "Tipo" %>
+		        	<%= field.collection_select :type, Type.all, :id, :name, {prompt: "Selecciona un tipo"}, {class: "form-control"} %>
+	        	</div>
+	        	<div class="form-group">
+					<%= field.label "Ciudad" %>
+		        	<%= field.collection_select :city, City.all, :id, :name, {prompt: "Selecciona una ciudad"}, {class: "form-control"} %>
+	        	</div>
 	        <% end %>
 		</div>
 	</div>
