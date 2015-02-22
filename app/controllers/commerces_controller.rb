@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CommercesController < ApplicationController
   before_filter :sanitize_page_params, only: [:create]
   
@@ -7,7 +8,7 @@ class CommercesController < ApplicationController
   
   def new
     if !user_signed_in?
-      flash[:alert] = "Debe iniciar sesion para esta accion."
+      flash[:alert] = "Debe iniciar sesión para esta acción."
       redirect_to new_user_session_path
     else
       @commerce = Commerce.new
