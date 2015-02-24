@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   resources :microposts, only: [:create, :destroy]
   
   resources :commerces, except: [:index]
+  
+  get "countries/:country_id/provinces" => "application#provinces", :as => "provinces", :format => :json
+  get "provinces/:province_id/cities" => "application#cities", :as => "cities", :format => :json
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

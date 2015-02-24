@@ -38,7 +38,9 @@ provinces = Province.create([
   { name: 'Santa Cruz', country: Country.find_by_name('Argentina') },
   { name: 'Tierra del Fuego', country: Country.find_by_name('Argentina') },
   { name: 'Neuquen', country: Country.find_by_name('Argentina') },
-  { name: 'Islas Malvinas', country: Country.find_by_name('Argentina') }
+  { name: 'Islas Malvinas', country: Country.find_by_name('Argentina') },
+  { name: 'Valparaiso', country: Country.find_by_name('Chile') },
+  { name: 'Vina del Mar', country: Country.find_by_name('Chile') }
 ])
 
 cities = City.create([

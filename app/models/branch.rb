@@ -9,5 +9,8 @@ class Branch < ActiveRecord::Base
   has_many :users, through: :administrator
   
   validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :commerce }
+  validates :address, presence: true
+  validates :phone, presence: true
   validates :type, presence: true
+  validates :city, presence: true
 end

@@ -7,6 +7,20 @@ class ApplicationController < ActionController::Base
   # account_update Devise actions
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   
+  def provinces
+    country = Country.find(params[:country_id])
+    respond_to do |format|
+      format.json { render :json => country.provinces }
+    end
+  end
+  
+  def cities
+    province = Province.find(params[:province_id])
+    respond_to do |format|
+      format.json { render :json => province.cities }
+    end
+  end
+  
   protected
   
   def configure_devise_permitted_parameters
