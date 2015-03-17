@@ -2,36 +2,38 @@
   <h1>Comercios adheridos</h1>
 </div>
 <% if not @commerces.nil? %>
-	<div class="panel panel-default">
-		<!-- Default panel contents -->
-		<div class="panel-heading">Comercios</div>
-		<div class="panel-body">
-			<p>Para agregar su comercio, haga <%= link_to "click aquí", new_commerce_path %>.</p>
-		</div>
-	
-		<!-- Table -->
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Comercio</th>
-					<th>Sucursal</th>
-					<th>Provincia</th>
-					<th>Ciudad</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @commerces.each do |com| %>
-					<% com.branches.each do |branch| %>
-						<tr>
-							<td><%= link_to com.name, commerce_path(com.id) %></td>
-							<td><%= branch.name %></td>
-							<td><%= branch.city.province.name %></td>
-							<td><%= branch.city.name %></td>
-						</tr>
+	<div class="col-xs-12 col-sm-6 col-md-8">
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">Comercios</div>
+			<div class="panel-body">
+				<p>Para agregar su comercio, haga <%= link_to "click aquí", new_commerce_path %>.</p>
+			</div>
+		
+			<!-- Table -->
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Comercio</th>
+						<th>Sucursal</th>
+						<th>Provincia</th>
+						<th>Ciudad</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @commerces.each do |com| %>
+						<% com.branches.each do |branch| %>
+							<tr>
+								<td><%= link_to com.name, commerce_path(com.id) %></td>
+								<td><%= branch.name %></td>
+								<td><%= branch.city.province.name %></td>
+								<td><%= branch.city.name %></td>
+							</tr>
+						<% end %>
 					<% end %>
-				<% end %>
-			</tbody>
-		</table>
+				</tbody>
+			</table>
+		</div>
 	</div>
 <% end %>
 
