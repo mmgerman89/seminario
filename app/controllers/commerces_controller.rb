@@ -25,6 +25,16 @@ class CommercesController < ApplicationController
     redirect_to commerces_path
   end
   
+  def my_commerces
+    commerces = Commerce.all
+    @my_commerces = Array.new
+    commerces.each do |com|
+      if com.user_id == current_user.id
+        @my_commerces << com
+      end
+    end
+  end
+  
   private
   
   def commerce_params

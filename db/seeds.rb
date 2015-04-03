@@ -102,3 +102,4 @@ admins = Administrator.create([
   { user: User.first, branch: Branch.find_by_name('El Tribuno')},
   { user: User.second, branch: Branch.find_by_name('El Nacional I')}
 ])
+

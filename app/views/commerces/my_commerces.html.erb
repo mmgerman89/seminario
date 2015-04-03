@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>Mis comercios</h1>
+</div>
+<% if not @my_commerces.nil? %>
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<p>Aquí puede ver los comercios de los que usted es propietario.</p>	
+		</div>
+		<div class="panel-body" align="right">
+			<%= button_to "Nuevo Comercio", new_commerce_path, type: "button", class: "btn btn-default", method: :get %>
+		</div>
+	
+		<!-- Table -->
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Sucursales</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @my_commerces.each do |com| %>
+					<tr>
+						<td><%= com.name %></td>
+						<td><%= com.branches.count %></td>
+						<td><%= link_to "Ver", commerce_path(com.id) %></td>
+						<td><%= link_to "Editar", commerce_path(com.id) %></td>
+						<td><%= link_to "Eliminar", commerce_path(com.id) %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+<% end %>

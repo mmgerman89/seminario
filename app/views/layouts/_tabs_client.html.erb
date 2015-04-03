@@ -1,0 +1,21 @@
+
+<ul class="nav nav-tabs nav-justified">
+  <li role="presentation" class="<%= @tabs["wall"] %>">
+  	<a href="<%= @tabs["wall"] == "active" ? "#" : root_path %>">Muro</a>
+  </li>
+  <li role="presentation" class="<%= @tabs["friends"] %>">
+  	<a href="<%= @tabs["friends"] == "active" ? "#" : "#" %>">Amigos</a>
+  </li>
+  <li role="presentation" class="<%= @tabs["commerces"] %>">
+  	<a href="<%= @tabs["commerces"] == "active" ? "#" : "#" %>">Comercios</a>
+  </li>
+  <li role="presentation" class="<%= @tabs["orders"] %>">
+  	<a href="<%= @tabs["orders"] == "active" ? "#" : "#" %>">Pedidos</a>
+  </li>
+  <li role="presentation" class="<%= @tabs["bookings"] %>">
+  	<a href="<%= @tabs["bookings"] == "active" ? "#" : "#" %>">Reservas</a>
+  </li>
+  <li role="presentation" class="<%= @tabs["config"] %>">
+  	<a href="<%= @tabs["config"] == "active" ? "#" : edit_user_registration_path %>">Configuración</a>
+  </li>
+</ul>

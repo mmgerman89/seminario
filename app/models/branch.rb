@@ -1,9 +1,8 @@
 class Branch < ActiveRecord::Base
   belongs_to :type
-  
   belongs_to :commerce
-
   belongs_to :city
+  belongs_to :menu
   
   has_many :administrators
   has_many :users, through: :administrator

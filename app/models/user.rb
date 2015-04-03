@@ -9,4 +9,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
            
   validates_confirmation_of :password
+  
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 end
