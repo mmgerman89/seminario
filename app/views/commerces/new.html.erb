@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4>Nuevo Comercio</h4>
-    <%= current_user.email %>
+    <p>Está por registrar un nuevo comercio a nombre de: <%= current_user.first_name + ' ' + current_user.last_name %></p>
   </div>
   <div class="panel-body">
   	<% @commerce.user = current_user %>
@@ -10,7 +10,18 @@
         <%= f.label "Nombre del Comercio" %>
         <%= f.text_field :name, class: "form-control" %>
       </div>
-      	
+      
+      <div class="panel panel-default">
+      	<div class="panel-heading">Categorías</div>
+      	<div class="panel-body">
+      		<%= f.fields_for :commerce_categories do |field| %>
+      			<div class="form-group">
+					<%= field.label "Categoría" %>
+		        	<%= field.text_field :name, class: "form-control" %>
+	        	</div>
+      		<% end %>
+      	</div>
+      </div>
 	<div class="panel panel-default">
 		<div class="panel-heading">Casa Central</div>
 		<div class="panel-body">
@@ -19,14 +30,7 @@
 					<%= field.label "Nombre de la Sucursal" %>
 		        	<%= field.text_field :name, class: "form-control" %>
 	        	</div>
-	        	<div class="form-group">
-					<%= field.label "Dirección" %>
-		        	<%= field.text_field :address, class: "form-control" %>
-	        	</div>
-	        	<div class="form-group">
-					<%= field.label "Teléfono" %>
-		        	<%= field.text_field :phone, class: "form-control" %>
-	        	</div>
+	        	
 	        	<div class="form-group">
 					<%= field.label "Tipo" %>
 		        	<%= field.collection_select :type, Type.all, :id, :name, {prompt: "Selecciona un tipo"}, {class: "form-control"} %>
@@ -57,6 +61,14 @@
 						"data-option-message" => "Seleccione una ciudad",
 						:class => "form-control" %>
 				</div>
+				<div class="form-group">
+					<%= field.label "Dirección" %>
+		        	<%= field.text_field :address, class: "form-control" %>
+	        	</div>
+	        	<div class="form-group">
+					<%= field.label "Teléfono" %>
+		        	<%= field.text_field :phone, class: "form-control" %>
+	        	</div>
 	        <% end %>
 		</div>
 	</div>
