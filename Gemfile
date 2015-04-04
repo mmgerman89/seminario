@@ -51,3 +51,6 @@ gem 'bootstrap-sass', '3.3.1.0'
 
 # Devise
 gem 'devise', '3.4.1', github: 'plataformatec/devise'
+
+#Tagging
+gem 'acts-as-taggable-on', '~> 3.4'

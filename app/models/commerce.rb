@@ -9,4 +9,7 @@ class Commerce < ActiveRecord::Base
   validates :user, presence: true
   
   accepts_nested_attributes_for :branches
+  
+  acts_as_taggable
+  acts_as_taggable_on :categories
 end

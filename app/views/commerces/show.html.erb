@@ -16,7 +16,11 @@
 				</tr>
 				<tr>
 					<td class="col-md-4">Propietario</td>
-					<td class="col-md-8"><%= @commerce.user.first_name %></td>
+					<td class="col-md-8"><%= @commerce.user.first_name + ' ' + @commerce.user.last_name %></td>
+				</tr>
+				<tr>
+					<td class="col-md-4">Categorías</td>
+					<td class="col-md-8"><%= @commerce.tag_list %></td>
 				</tr>
 			</table>
 		  </div>

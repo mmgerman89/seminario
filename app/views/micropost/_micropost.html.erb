@@ -4,7 +4,15 @@
 	  <li class="list-group-item active">
 	  	<div class="media">
 		  <div class="media-left media-middle">
-	      	<img class="media-object" src="/img/<%= m.user.id %>.jpg" alt="Ned Stark">
+		  	<% 	
+		  		fem = Sex.find_by_name("Femenino")
+		  		if m.user.sex == fem
+		  			profile_picture = "signup_female.png"
+		  		else
+		  			profile_picture = "signup_male.jpg"
+		  		end
+		  	%>
+	      	<img class="media-object" src="/img/<%= profile_picture %>" alt="Foto de perfil">
 		  </div>
 		  <div class="media-body">
 		  	<div class="media-heading">
