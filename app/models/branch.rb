@@ -12,4 +12,7 @@ class Branch < ActiveRecord::Base
   validates :address, presence: true
   validates :phone, presence: true
   validates :city, presence: true
+  
+  accepts_nested_attributes_for :users
+  accepts_nested_attributes_for :administrators
 end

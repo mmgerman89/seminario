@@ -21,12 +21,22 @@
 		<%= f.text_field :tag_list, class: "form-control" %>
 	</div>
 	
+	<!-- Registrar Sucursal Principal -->
 	<div class="panel panel-default">
-		<div class="panel-heading">Casa Central</div>
+		<div class="panel-heading">Sucursal Principal</div>
 		<div class="panel-body">
 			<%= f.fields_for :branches do |branch| %>
 				<%= render 'branch_fields', field: branch %>
 			<% end %>
+		</div>
+		<!-- Registrar Administradores de la Sucursal Principal -->
+		<div class="panel panel-default">
+			<div class="panel-heading">Administradores</div>
+			<div class="panel-body">
+				<%= f.fields_for :administrators do |admin| %>
+					<%= render 'administrator_fields', field: admin %>
+				<% end %>
+			</div>
 		</div>
 	</div>
 	

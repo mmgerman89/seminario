@@ -54,3 +54,6 @@ gem 'devise', '3.4.1', github: 'plataformatec/devise'
 
 #Tagging
 gem 'acts-as-taggable-on', '~> 3.4'
+
+#Cocoon
+gem "cocoon"

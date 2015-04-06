@@ -1,23 +1,17 @@
-<%= field.fields_for :administrators do |field_admin| %>
-	<div class="panel panel-default">
-		<div class="panel-heading">Administradores</div>
-		<div class="panel-body">
-			<table class="table">
-				<thead>
-					<th>Usuario</th>
-					<th><a href="#">Agregar Administrador</a></th>
-				</thead
-				<tbody>
-					<tr>
-						<td><%= current_user.first_name + ' ' + current_user.last_name %> (yo)</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><a href="#">Quitar</a></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-<% end %>
+
+<table class="table">
+	<thead>
+		<th>Usuario</th>
+		<th><a href="#">Agregar Administrador</a></th>
+	</thead
+	<tbody>
+		<tr>
+			<td><%= current_user.first_name + ' ' + current_user.last_name %> (yo)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
