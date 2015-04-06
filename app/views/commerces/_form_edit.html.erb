@@ -1,0 +1,53 @@
+
+<%= form_for @commerce do |f| %>
+	<% if @commerce.errors.any? %>
+		<div id="error_explanation">
+		  <h2><%= pluralize(@commerce.errors.count, "error") %> prohibited this commerce from being saved:</h2>
+		
+		  <% @commerce.errors.full_messages.each do |message| %>
+		    <div class="alert alert-danger" role="alert">
+		    	<p><%= message %></p>
+		    </div>
+		  <% end %>
+		</div>
+	<% end %>
+	
+	<div class="form-group">
+		<%= f.label "Nombre del Comercio" %>
+		<%= f.text_field :name, class: "form-control" %>
+	</div>
+	<div class="form-group">
+		<%= f.label "Categorías" %>
+		<%= f.text_field :tag_list, class: "form-control" %>
+	</div>
+	
+	<%= f.submit "Guardar", class: "btn btn-primary" %>
+<% end %>
+<br />
+	<div class="panel panel-default">
+	  <div class="panel-heading">Sucursales</div>
+	
+	  <!-- Table -->
+	  <table class="table">
+	    <thead>
+	    	<th>Nombre</th>
+	    	<th>Ciudad</th>
+	    	<th>Dirección</th>
+	    	<th>Teléfono</th>
+	    	<th></th>
+	    	<th></th>
+	    </thead>
+	    <tbody>
+	    	<% @commerce.branches.each do |branch| %>
+	    		<tr>
+	    			<td><%= branch.name %></td>
+	    			<td><%= branch.city.name %></td>
+	    			<td><%= branch.address %></td>
+	    			<td><%= branch.phone %></td>
+	    			<td><%= link_to "Editar", "#" %></td>
+	    			<td><%= link_to "Eliminar", "#" %></td>
+	    		</tr>
+	    	<% end %>
+	    </tbody>
+	  </table>
+	</div>

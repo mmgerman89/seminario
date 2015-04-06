@@ -1,6 +1,4 @@
 class Commerce < ActiveRecord::Base
-  has_many :commerce_categories
-  has_many :categories, through: :commerce_category
   has_many :branches
   belongs_to :user
   
@@ -8,7 +6,7 @@ class Commerce < ActiveRecord::Base
   validates :name, uniqueness: { case_sensitive: false }
   validates :user, presence: true
   
-  accepts_nested_attributes_for :branches
+  accepts_nested_attributes_for :branches, allow_destroy: true
   
   acts_as_taggable
   acts_as_taggable_on :categories

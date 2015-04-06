@@ -28,7 +28,7 @@
 						<td><%= com.name %></td>
 						<td><%= com.branches.count %></td>
 						<td><%= link_to "Ver", commerce_path(com.id) %></td>
-						<td><%= link_to "Editar", commerce_path(com.id) %></td>
+						<td><%= link_to "Editar", edit_commerce_path(com.id) %></td>
 						<td><%= link_to "Eliminar", commerce_path(com.id) %></td>
 					</tr>
 				<% end %>

@@ -12,19 +12,18 @@ Rails.application.routes.draw do
   match '/help',      to: 'static_pages#help', via: :get
   match '/about',     to: 'static_pages#about', via: :get
   match '/contact',   to: 'static_pages#contact', via: :get
-  match '/commerces',   to: 'static_pages#commerces', via: :get
+  #match '/commerces',   to: 'static_pages#commerces', via: :get
 
   resources :users
   resources :microposts, only: [:create, :destroy]
-  resources :commerces, except: [:index]
+  resources :commerces
+  match '/my_commerces', to: "commerces#my_commerces", via: :get
   resources :branches, only: [:show]
   
   get "countries/:country_id/provinces" => "application#provinces", :as => "provinces", :format => :json
   get "provinces/:province_id/cities" => "application#cities", :as => "cities", :format => :json
 
-  resources :menu, only: [:show]
   
-  match '/my_commerces', to: "commerces#my_commerces", via: :get
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

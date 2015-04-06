@@ -1,0 +1,34 @@
+
+<%= form_for :commerce, url: commerces_path do |f| %>
+	<% if @commerce.errors.any? %>
+		<div id="error_explanation">
+		  <h2><%= pluralize(@commerce.errors.count, "error") %> prohibited this commerce from being saved:</h2>
+		
+		  <% @commerce.errors.full_messages.each do |message| %>
+		    <div class="alert alert-danger" role="alert">
+		    	<p><%= message %></p>
+		    </div>
+		  <% end %>
+		</div>
+	<% end %>
+	
+	<div class="form-group">
+		<%= f.label "Nombre del Comercio" %>
+		<%= f.text_field :name, class: "form-control" %>
+	</div>
+	<div class="form-group">
+		<%= f.label "Categorías" %>
+		<%= f.text_field :tag_list, class: "form-control" %>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">Casa Central</div>
+		<div class="panel-body">
+			<%= f.fields_for :branches do |branch| %>
+				<%= render 'branch_fields', field: branch %>
+			<% end %>
+		</div>
+	</div>
+	
+	<%= f.submit "Registrar", class: "btn btn-primary" %>
+<% end %>
