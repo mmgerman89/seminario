@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require cocoon
 
  jQuery(document).ready(function () {
         $('select[data-option-dependent=true]').each(function (i) {
