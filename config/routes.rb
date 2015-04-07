@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'friendship/create'
+
+  get 'friendship/destroy'
+
   devise_for :users
   #get 'static_pages/about'
 
@@ -23,7 +27,7 @@ Rails.application.routes.draw do
   get "countries/:country_id/provinces" => "application#provinces", :as => "provinces", :format => :json
   get "provinces/:province_id/cities" => "application#cities", :as => "cities", :format => :json
 
-  
+  resources :friendships, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
