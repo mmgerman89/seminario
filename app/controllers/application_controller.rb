@@ -21,6 +21,20 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def suggested_friends
+    @users = Array.new    
+    User.where.not(id: current_user.id).each do |u|
+      if !current_user.friends.include? u and !current_user.sents.include? u and 
+          !current_user.requests.include? u and !current_user.inverse_friends.include? u
+        @users << u
+      end
+    end
+  end
+  
+  def suggested_commerces
+    @commerces = Commerce.all
+  end
+  
   protected
   
   def configure_devise_permitted_parameters

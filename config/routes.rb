@@ -27,7 +27,10 @@ Rails.application.routes.draw do
   get "countries/:country_id/provinces" => "application#provinces", :as => "provinces", :format => :json
   get "provinces/:province_id/cities" => "application#cities", :as => "cities", :format => :json
 
-  resources :friendships, only: [:create, :destroy]
+  resources :friendships, only: [:index, :create, :destroy]
+  match '/accept_request', to: "friendships#accept_request", via: :post
+  match '/cancel_request', to: "friendships#cancel_request", via: :post
+  match '/unfriend', to: "friendships#unfriend", via: :post
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

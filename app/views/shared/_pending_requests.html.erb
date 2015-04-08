@@ -1,0 +1,40 @@
+<div id="requestsCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+  	<% count = @friendship_requests.count %>
+  	<% for i in 0..(count-1) %>
+  	<% end %>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+	<% @friendship_requests.each do |user| %>
+	    <div class="<%= user == @friendship_requests.first ? 'item active' : 'item' %>">
+	      <div class="media">
+			  <div class="media-left media-middle">
+			    <a href="#">
+			    	<% 	
+			    		profile_picture = user.sex == Sex.find_by_name("Femenino") ?
+			    			"http://i61.tinypic.com/255hm6o.jpg" : "http://oi61.tinypic.com/5cy3rm.jpg"
+				  	%>
+			      <img class="media-object" src="<%= profile_picture %>" alt="Foto de perfil">
+			    </a>
+			  </div>
+			  <div class="media-body">
+			    <h4 class="media-heading"><%= user.first_name + ' ' + user.last_name %></h4>
+			    <p><%= link_to "Aceptar", accept_request_path(friend_id: user), method: :post %> | <%= link_to "Rechazar", cancel_request_path(friend_id: user), method: :post %></p>
+			  </div>
+			</div>
+	    </div>
+	<% end %>
+  </div>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#requestsCarousel" role="button" data-slide="prev">
+    <
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#requestsCarousel" role="button" data-slide="next">
+    >
+    <span class="sr-only">Next</span>
+  </a>
+</div>

@@ -1,0 +1,49 @@
+<%
+	@tabs = Hash.new
+	@tabs["friends"] = "active"
+%>
+<% if user_signed_in? %>
+	<%= render 'layouts/tabs_client' %>
+	<div class="page-header">
+	  <h1>Amigos</h1>
+	</div>
+	<div class="row">
+	  <div class="col-xs-12 col-sm-6 col-md-8">
+		<ul>
+			<% @friends.each do |friend| %>
+				<div class="media">
+				  <div class="media-left media-middle">
+				    <a href="#">
+				    	<% 	
+				    		profile_picture = friend.sex == Sex.find_by_name("Femenino") ?
+				    			"http://i61.tinypic.com/255hm6o.jpg" : "http://oi61.tinypic.com/5cy3rm.jpg"
+					  	%>
+				      <img class="media-object" src="<%= profile_picture %>" alt="Foto de perfil">
+				    </a>
+				  </div>
+				  <div class="media-body">
+				    <h4 class="media-heading"><%= friend.first_name + ' ' + friend.last_name %></h4>
+				    <p><%= link_to "Quitar", unfriend_path(friend_id: friend), method: :post %></p>
+				  </div>
+				</div>
+			<% end %>
+		</ul>
+	  </div>
+	  <div class="col-xs-6 col-md-4">
+	  	<div class="panel panel-primary">
+	  		<div class="panel-heading">Solicitudes pendientes</div>
+	  		<div class="panel-body">
+				<%= render 'shared/pending_requests' %>
+			</div>
+	  	</div>
+	  	<div class="panel panel-primary">
+	  		<div class="panel-heading">Personas que quizás conozcas</div>
+	  		<div class="panel-body">
+				<%= render 'shared/suggested_friends' %>
+			</div>
+	  	</div>
+	  </div>
+	</div>
+<% end %>
+
+	
