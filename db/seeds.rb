@@ -60,6 +60,22 @@ cities = City.create([
 
 
 # Datos de ejemplo
+users = User.create([
+    { email: "ned@stark.com", first_name: "Ned", last_name: "Stark",
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino")},
+    { email: "catelyn@stark.com", first_name: "Catelyn", last_name: "Stark",
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Femenino")},
+    { email: "jon@snow.com", first_name: "Jon", last_name: "Snow",
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino")},
+    { email: "tyrion@lannister.com", first_name: "Tiryon", last_name: "Lannister",
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Femenino")},
+    { email: "robert@baratheon.com", first_name: "Robert", last_name: "Baratheon",
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino")},
+    { email: "danny@targaryen.com", first_name: "Danny", last_name: "Targaryen",
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Femenino")},
+    { email: "rob@arryn.com", first_name: "Robb", last_name: "Arryn",
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino")}
+])
 
 commerce = Commerce.create([
   { name: 'Mak Lucas', user: User.first },
@@ -83,4 +99,6 @@ admins = Administrator.create([
   { user: User.first, branch: Branch.find_by_name('El Tribuno')},
   { user: User.second, branch: Branch.find_by_name('El Nacional I')}
 ])
+
+
 
