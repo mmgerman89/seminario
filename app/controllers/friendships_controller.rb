@@ -37,7 +37,7 @@ class FriendshipsController < ApplicationController
         request.friends_since = Time.now
         request.save!
       else
-        flash[:alert] = "No se pudo concretar la operación"
+        flash[:alert] = "No se pudo concretar la operacion"
       end
       redirect_to friendships_path
     end
@@ -51,7 +51,7 @@ class FriendshipsController < ApplicationController
         request.destroy!
         flash[:notice] = "Rechazado correctamente"
       else
-        flash[:alert] = "No se pudo concretar la operación"
+        flash[:alert] = "No se pudo concretar la operacion"
       end
       redirect_to friendships_path
     end
@@ -69,7 +69,7 @@ class FriendshipsController < ApplicationController
         request.destroy!
         flash[:notice] = "Eliminado correctamente"
       else
-        flash[:alert] = "No se pudo concretar la operación"
+        flash[:alert] = "No se pudo concretar la operacion"
       end
       redirect_to friendships_path
     end
