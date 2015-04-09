@@ -1,6 +1,7 @@
 <%
 	@tabs = Hash.new
 	@tabs["wall"] = "active"
+	@requests = !current_user.nil? ? current_user.requests.count : 0
 %>
 <% if user_signed_in? %>
 	<%= render 'layouts/tabs_client' %>

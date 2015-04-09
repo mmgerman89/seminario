@@ -1,6 +1,7 @@
 <%
 	@tabs = Hash.new
 	@tabs["friends"] = "active"
+	@requests = !current_user.nil? ? current_user.requests.count : 0
 %>
 <% if user_signed_in? %>
 	<%= render 'layouts/tabs_client' %>
@@ -34,6 +35,12 @@
 	  		<div class="panel-heading">Solicitudes pendientes</div>
 	  		<div class="panel-body">
 				<%= render 'shared/pending_requests' %>
+			</div>
+	  	</div>
+	  	<div class="panel panel-primary">
+	  		<div class="panel-heading">Solicitudes enviadas</div>
+	  		<div class="panel-body">
+				<%= render 'shared/sent_requests' %>
 			</div>
 	  	</div>
 	  	<div class="panel panel-primary">

@@ -25,6 +25,7 @@ class FriendshipsController < ApplicationController
       @friendship_requests = current_user.requests
       @friends = current_user.friends
       @friends += current_user.inverse_friends
+      @sent_requests = current_user.sents
     end
   end
   
@@ -47,8 +48,10 @@ class FriendshipsController < ApplicationController
     if user_signed_in?
       user = User.find_by_id(params[:friend_id])
       request = Friendship.find_by_user_id_and_friend_id(user, current_user)
-      if request
-        request.destroy!
+      if !request
+        request = Friendship.find_by_user_id_and_friend_id(current_user, user)
+      end
+      if request.destroy!
         flash[:notice] = "Rechazado correctamente"
       else
         flash[:alert] = "No se pudo concretar la operacion"

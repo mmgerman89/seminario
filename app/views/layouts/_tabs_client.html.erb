@@ -4,7 +4,7 @@
   	<a href="<%= @tabs["wall"] == "active" ? "#" : root_path %>">Muro</a>
   </li>
   <li role="presentation" class="<%= @tabs["friends"] %>">
-  	<a href="<%= @tabs["friends"] == "active" ? "#" : friendships_path %>">Amigos</a>
+  	<a href="<%= @tabs["friends"] == "active" ? "#" : friendships_path %>">Amigos <span class="badge"><%= "#{@requests}" if @requests != 0 %></span></a>
   </li>
   <li role="presentation" class="<%= @tabs["commerces"] %>">
   	<a href="<%= @tabs["commerces"] == "active" ? "#" : "#" %>">Comercios</a>
