@@ -31,24 +31,12 @@
 		</ul>
 	  </div>
 	  <div class="col-xs-6 col-md-4">
-	  	<div class="panel panel-primary">
-	  		<div class="panel-heading">Solicitudes pendientes</div>
-	  		<div class="panel-body">
-				<%= render 'shared/pending_requests' %>
-			</div>
-	  	</div>
-	  	<div class="panel panel-primary">
-	  		<div class="panel-heading">Solicitudes enviadas</div>
-	  		<div class="panel-body">
-				<%= render 'shared/sent_requests' %>
-			</div>
-	  	</div>
-	  	<div class="panel panel-primary">
-	  		<div class="panel-heading">Personas que quizás conozcas</div>
-	  		<div class="panel-body">
-				<%= render 'shared/suggested_friends' %>
-			</div>
-	  	</div>
+	  	<%= render 'shared/pending_requests' %>
+	  	
+	  	<%= render 'shared/sent_requests' %>
+	  	
+	  	<%= render 'shared/suggested_friends' %>
+			
 	  </div>
 	</div>
 <% end %>
