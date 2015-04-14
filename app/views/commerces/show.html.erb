@@ -25,27 +25,37 @@
 			</table>
 		  </div>
 		</div>
-		<% @commerce.branches.each do |branch| %>
-			<div class="panel panel-success">
-			  <div class="panel-heading">Sucursal <strong><%= branch.name %></strong></div>
-			  <div class="panel-body">
-			  	<!-- Table -->
-				<table class="table">
-					<tr>
-						<td class="col-md-4">Nombre</td>
-						<td class="col-md-8"><%= branch.name %></td>
-					</tr>
-					<tr>
-						<td class="col-md-4">Dirección</td>
-						<td class="col-md-8"><%= branch.address %></td>
-					</tr>
-					<tr>
-						<td class="col-md-4">Teléfono</td>
-						<td class="col-md-8"><%= branch.phone %></td>
-					</tr>
-				</table>
-			  </div>
-			</div>
-		<% end %>
+		<div align="right">
+			<%= button_to 'Nuevo Local', new_branch_path, method: :get, class: "btn btn-primary" %><br />
+		</div>
+		<div class="panel panel-success">
+		  <div class="panel-heading">Locales</div>
+		  <div class="panel-body">
+		  	<!-- Table -->
+			<table class="table">
+				<thead>
+					<th>Nombre</th>
+					<th>Dirección</th>
+					<th>Teléfono</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</thead>
+				<tbody>
+					<% @commerce.branches.each do |branch| %>
+						<tr>
+							<td class="col-md-3"><%= branch.name %></td>
+							<td class="col-md-3"><%= branch.address %></td>
+							<td class="col-md-3"><%= branch.phone %></td>
+							<td class="col-md-1"><%= link_to 'Administrar', branch_path(branch.id) %></td>
+							<td class="col-md-1"><%= link_to 'Editar', edit_branch_path(branch.id) %></td>
+							<td class="col-md-1"><%= link_to 'Eliminar', '#' %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		  </div>
+		</div>
+		
 	<% end %>
 </div>

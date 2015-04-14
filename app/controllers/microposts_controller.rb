@@ -5,6 +5,10 @@ class MicropostsController < ApplicationController
   def index
   end
   
+  def new
+    @micropost = Micropost.new
+  end
+  
   def create
     @micropost = current_user.microposts.build(micropost_params)
     @micropost.save

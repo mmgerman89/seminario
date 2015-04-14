@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406202914) do
+ActiveRecord::Schema.define(version: 20150413225957) do
 
   create_table "administrators", force: true do |t|
     t.integer  "user_id"
@@ -85,6 +85,16 @@ ActiveRecord::Schema.define(version: 20150406202914) do
     t.datetime "updated_at"
     t.integer  "country_id"
   end
+
+  create_table "publications", force: true do |t|
+    t.string   "content"
+    t.integer  "branch_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publications", ["branch_id", "created_at"], name: "index_publications_on_branch_id_and_created_at"
 
   create_table "sexes", force: true do |t|
     t.string   "name"

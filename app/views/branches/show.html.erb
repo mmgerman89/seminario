@@ -1,5 +1,16 @@
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Información</a></li>
-  <li role="presentation"><%= link_to "Carta", "#" %></li>
-  <li role="presentation"><a href="#">Contacto</a></li>
-</ul>
+<%
+	@tabs = Hash.new
+	@tabs["wall"] = "active"
+%>
+<%= render 'layouts/tabs_branch' %>
+<div class="page-header">
+  <h1>Local <%= @branch.name + ' - ' + @branch.commerce.name %>!</h1>
+</div>
+
+<% if @branch.publications.count > 0 %>
+	<%= render 'shared/publication_form' %>
+	<%= render 'publications/publication' %>
+<% else %>
+	<%= render 'shared/publication_form' %>
+	<p><strong>No has publicado nada todavía ¡Animate!</strong></p>
+<% end %>

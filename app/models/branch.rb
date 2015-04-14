@@ -6,6 +6,7 @@ class Branch < ActiveRecord::Base
   has_many :administrators
   has_many :users, through: :administrator
   
+  has_many :publications, dependent: :destroy
   has_many :items
   
   validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :commerce }
