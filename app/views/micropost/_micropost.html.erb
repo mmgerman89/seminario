@@ -1,5 +1,14 @@
-
-<% Micropost.all.each do |m| %>
+<%
+	@microposts = Array.new
+	friends = current_user.friends
+	friends << current_user.inverse_friends
+	friends.each do |friend|
+		@microposts += Micropost.where(user_id: friend)
+	end
+	@microposts += Micropost.where(user_id: current_user.id)
+	@microposts.sort_by! { |m| m[:created_at] }.reverse!
+%>
+<% @microposts.each do |m| %>
 	<div class="list-group">
 	  <li class="list-group-item active">
 	  	<div class="media">

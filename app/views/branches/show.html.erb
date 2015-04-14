@@ -4,13 +4,19 @@
 %>
 <%= render 'layouts/tabs_branch' %>
 <div class="page-header">
-  <h1>Local <%= @branch.name + ' - ' + @branch.commerce.name %>!</h1>
+  <h1><%= @branch.name + ' - ' + @branch.commerce.name %></h1>
 </div>
-
-<% if @branch.publications.count > 0 %>
-	<%= render 'shared/publication_form' %>
-	<%= render 'publications/publication' %>
-<% else %>
-	<%= render 'shared/publication_form' %>
-	<p><strong>No has publicado nada todavía ¡Animate!</strong></p>
-<% end %>
+<div class="row">
+ 	<div class="col-xs-12 col-sm-6 col-md-8">
+		<% if @branch.publications.count > 0 %>
+			<%= render 'shared/publication_form' %>
+			<%= render 'publications/publication' %>
+		<% else %>
+			<%= render 'shared/publication_form' %>
+			<p><strong>No has publicado nada todavía ¡Animate!</strong></p>
+		<% end %>
+	</div>
+	<div class="col-xs-6 col-md-4">
+		<%= render 'shared/orders' %>
+	</div>
+</div>

@@ -10,11 +10,12 @@
 	</div>
 	<div class="row">
 	  <div class="col-xs-12 col-sm-6 col-md-8">
-	  	<% if current_user.microposts.any? %>
+	  	<% if current_user.microposts.count > 0 %>
 			<%= render 'shared/micropost_form' %>
 			<%= render 'micropost/micropost' %>
 		<% else %>
-			<p>No has publicado nada todavía ¡Animate!</p>
+			<%= render 'micropost/micropost' %>
+			<p><strong>No has publicado nada todavía ¡Animate!</strong></p>
 		<% end %>
 	  </div>
 	  <div class="col-xs-6 col-md-4">
