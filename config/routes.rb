@@ -1,38 +1,34 @@
 Rails.application.routes.draw do
-  get 'friendship/create'
-
-  get 'friendship/destroy'
-
   devise_for :users
-  #get 'static_pages/about'
-
-  #get 'static_pages/contact'
-
-  #get 'static_pages/home'
-
-  #get 'static_pages/help'
-
-  root to: 'static_pages#home', via: :get
-  match '/help',      to: 'static_pages#help', via: :get
-  match '/about',     to: 'static_pages#about', via: :get
-  match '/contact',   to: 'static_pages#contact', via: :get
-  #match '/commerces',   to: 'static_pages#commerces', via: :get
-
-  resources :users
-  resources :microposts, only: [:create, :destroy]
-  resources :publications, only: [:create, :destroy]
-  resources :commerces
-  match '/my_commerces', to: "commerces#my_commerces", via: :get
-  resources :branches
-  resources :menus
   
   get "countries/:country_id/provinces" => "application#provinces", :as => "provinces", :format => :json
   get "provinces/:province_id/cities" => "application#cities", :as => "cities", :format => :json
 
+  root to: 'static_pages#home', via: :get
+  
+  match '/help',      to: 'static_pages#help', via: :get
+  match '/about',     to: 'static_pages#about', via: :get
+  match '/contact',   to: 'static_pages#contact', via: :get
+
+  resources :users
+  resources :microposts, only: [:create, :destroy]
   resources :friendships, only: [:index, :create, :destroy]
+  get 'friendship/create'
+  get 'friendship/destroy'
+  
+  resources :commerces
+  match '/my_commerces', to: "commerces#my_commerces", via: :get
+  resources :branches
+  resources :publications, only: [:create, :destroy]
+  
+  resources :menus
+  resources :items
+  
   match '/accept_request', to: "friendships#accept_request", via: :post
   match '/cancel_request', to: "friendships#cancel_request", via: :post
   match '/unfriend', to: "friendships#unfriend", via: :post
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
