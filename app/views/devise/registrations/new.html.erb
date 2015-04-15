@@ -22,6 +22,10 @@
         <%= f.collection_select :sex_id, Sex.all, :id, :name, {prompt: "Selecciona un sexo"}, {class: "form-control"} %>
       </div>
       <div class="form-group">
+        <%= f.label "Foto (URL)" %>
+        <%= f.text_field :photo_url, class: "form-control" %>
+      </div>
+      <div class="form-group">
         <%= f.label "Contraseña" %><br />
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
       </div>

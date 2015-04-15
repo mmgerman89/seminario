@@ -26,6 +26,10 @@
         <%= f.label "Sexo" %>
         <%= f.collection_select :sex_id, Sex.all, :id, :name, {prompt: "Selecciona un sexo"}, {class: "form-control"} %>
       </div>
+      <div class="form-group">
+        <%= f.label "Foto (URL)" %>
+        <%= f.text_field :photo_url, class: "form-control" %>
+      </div>
     <div class="form-group">
       <%= f.label "Contraseña" %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', :default => "dejar en blanco si no se desea cambiar") %>)</i><br />
       <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>
