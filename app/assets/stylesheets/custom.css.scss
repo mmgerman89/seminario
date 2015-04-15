@@ -19,6 +19,57 @@
   width: 100%;
 }
 
+/* Item menu */
+.menu {
+  
+}
+
+.links-branch {
+  font-size: 0.9em;
+  display: inline;
+}
+
+.price-branch {
+  font-size: 1.7em;
+  float: right;
+}
+
+.item-bottom {
+  padding-top: 15px;
+}
+
+/* header branch */
+#branch-title {
+  margin-top: 0;
+}
+#info_branch {
+  font-size: 0.75em;
+}
+
+#info_branch h3{
+  font-size: 1.2em;
+  text-align: center;
+}
+
+#branch-panel-body {
+  margin: 0;
+  padding: 5px;
+}
+
+#branch-panel-body td{
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+#branch-panel-heading {
+  margin: 0;
+  padding: 5px;
+}
+
+.page-header hr {
+  margin-top: 0;
+}
+
 /* footer */
 footer {
   margin-top: 45px;

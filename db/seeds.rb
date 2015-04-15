@@ -68,7 +68,7 @@ users = User.create([
     { email: "jon@snow.com", first_name: "Jon", last_name: "Snow",
     password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino")},
     { email: "tyrion@lannister.com", first_name: "Tiryon", last_name: "Lannister",
-    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Femenino")},
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino")},
     { email: "robert@baratheon.com", first_name: "Robert", last_name: "Baratheon",
     password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino")},
     { email: "danny@targaryen.com", first_name: "Danny", last_name: "Targaryen",

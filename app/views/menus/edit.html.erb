@@ -1,0 +1,14 @@
+<%
+	@tabs = Hash.new
+	@tabs["menus"] = "active"
+%>
+<%= render layout: 'layouts/tabs_branch', locals: {title: 'Carta'} {  } %>
+
+<!-- <img src="http://www.vectoresgratis.com/wp-content/uploads/2011/10/en-construccion.jpg" alt="En construcción" /> -->
+<div class="menu">
+	<div class="row">
+		<% @menu.each do |item| %>
+			<%= render layout: 'shared/item_branch', locals: {item: item} {} %>
+		<% end %>
+	</div>
+</div>

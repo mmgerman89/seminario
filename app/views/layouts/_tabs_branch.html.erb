@@ -1,7 +1,18 @@
-
+<div class="page-header">
+	<div class="row">
+		<div class="col-xs-8 col-sm-8 col-md-8">
+			<h1 id="branch-title"><%= title %></h1>
+			<h2><%= @branch.name + ' - ' + @branch.commerce.name %></h2>
+		</div>
+		<div class="col-xs-4 col-sm-4 col-md-4">
+			<div id="info_branch"><%= render 'shared/branch_info' %></div>
+		</div>
+	</div>
+</div>
+<hr />
 <ul class="nav nav-tabs nav-justified">
   <li role="presentation" class="<%= @tabs["wall"] %>">
-  	<a href="<%= @tabs["wall"] == "active" ? "#" : "" %>">Muro</a>
+  	<a href="<%= @tabs["wall"] == "active" ? "#" : branch_path(@branch.id) %>">Muro</a>
   </li>
   <li role="presentation" class="<%= @tabs["orders"] %>">
   	<a href="<%= @tabs["orders"] == "active" ? "#" : "#" %>">Pedidos <span class="badge"><%= "#{@requests}" if @requests != 0 %></span></a>
@@ -10,8 +21,8 @@
   <li role="presentation" class="<%= @tabs["reviews"] %>">
   	<a href="<%= @tabs["reviews"] == "active" ? "#" : "#" %>">Opiniones <span class="badge"><%= "#{@requests}" if @requests != 0 %></span></a>
   </li>
-  <li role="presentation" class="<%= @tabs["commerces"] %>">
-  	<a href="<%= @tabs["commerces"] == "active" ? "#" : "#" %>">Carta</a>
+  <li role="presentation" class="<%= @tabs["menus"] %>">
+  	<a href="<%= @tabs["menus"] == "active" ? "#" : edit_menu_path(@branch.id) %>">Carta</a>
   </li>
   <li role="presentation" class="<%= @tabs["orders"] %>">
   	<a href="<%= @tabs["orders"] == "active" ? "#" : "#" %>">Seguidores</a>
@@ -20,3 +31,6 @@
   	<a href="<%= @tabs["bookings"] == "active" ? "#" : "#" %>">Administración</a>
   </li>
 </ul>
+
+<br />
+

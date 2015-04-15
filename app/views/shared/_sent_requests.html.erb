@@ -18,11 +18,7 @@
 			      <div class="media">
 					  <div class="media-left media-middle">
 					    <a href="#">
-					    	<% 	
-					    		profile_picture = user.sex == Sex.find_by_name("Femenino") ?
-					    			"http://i61.tinypic.com/255hm6o.jpg" : "http://oi61.tinypic.com/5cy3rm.jpg"
-						  	%>
-					      <img class="media-object" src="<%= profile_picture %>" alt="Foto de perfil">
+					      <img class="media-object" src="<%= user.url %>" alt="Foto de perfil">
 					    </a>
 					  </div>
 					  <div class="media-body">

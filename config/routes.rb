@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :commerces
   match '/my_commerces', to: "commerces#my_commerces", via: :get
   resources :branches
+  resources :menus
   
   get "countries/:country_id/provinces" => "application#provinces", :as => "provinces", :format => :json
   get "provinces/:province_id/cities" => "application#cities", :as => "cities", :format => :json
