@@ -21,8 +21,14 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: postgresql
-  host: ec2-54-243-48-204.compute-1.amazonaws.com
-  username: vnpcjrxyevdpzj
-  database: d8luhnejr8rur0
-  password: oQUOuaeuKlnAmEv8QpftIdif9T
+  <<: *default
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
+  # adapter: postgresql
+  # host: ec2-54-243-48-204.compute-1.amazonaws.com
+  # username: vnpcjrxyevdpzj
+  # database: d8luhnejr8rur0
+  # password: oQUOuaeuKlnAmEv8QpftIdif9T

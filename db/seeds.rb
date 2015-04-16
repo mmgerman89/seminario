@@ -62,19 +62,26 @@ cities = City.create([
 # Datos de ejemplo
 users = User.create([
     { email: "ned@stark.com", first_name: "Ned", last_name: "Stark",
-    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino")},
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino"),
+    photo_url: "http://s8.tinypic.com/2yodamt_th.jpg"},
     { email: "catelyn@stark.com", first_name: "Catelyn", last_name: "Stark",
-    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Femenino")},
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Femenino"),
+    photo_url: "http://s8.tinypic.com/16gwnr_th.jpg"},
     { email: "jon@snow.com", first_name: "Jon", last_name: "Snow",
-    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino")},
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino"),
+    photo_url: "http://s8.tinypic.com/2yodamt_th.jpg"},
     { email: "tyrion@lannister.com", first_name: "Tiryon", last_name: "Lannister",
-    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino")},
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino"),
+    photo_url: "http://s8.tinypic.com/2yodamt_th.jpg"},
     { email: "robert@baratheon.com", first_name: "Robert", last_name: "Baratheon",
-    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino")},
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino"),
+    photo_url: "http://s8.tinypic.com/2yodamt_th.jpg"},
     { email: "danny@targaryen.com", first_name: "Danny", last_name: "Targaryen",
-    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Femenino")},
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Femenino"),
+    photo_url: "http://s8.tinypic.com/16gwnr_th.jpg"},
     { email: "rob@arryn.com", first_name: "Robb", last_name: "Arryn",
-    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino")}
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino"),
+    photo_url: "http://s8.tinypic.com/2yodamt_th.jpg"}
 ])
 
 commerce = Commerce.create([
@@ -84,13 +91,13 @@ commerce = Commerce.create([
 
 branches = Branch.create([
   { name: '3C', address: 'Virrey Toledo 1354', phone: '(0387) 4215239',
-    city: City.find_by_name('Salta'),
+    city: City.find_by_name('Salta'), photo_url: "http://s8.tinypic.com/oaxij6_th.jpg",
     commerce: Commerce.find_by_name('Mak Lucas') },
   { name: 'El Tribuno', address: 'Barrio el Tribuno', phone: '(0387) 4225588',
-    city: City.find_by_name('Salta'),
+    city: City.find_by_name('Salta'), photo_url: "http://s8.tinypic.com/oaxij6_th.jpg",
     commerce: Commerce.find_by_name('Mak Lucas') },
   { name: 'El Nacional I', address: 'Virrey Toledo 256', phone: '(0387) 4336699',
-    city: City.find_by_name('Salta'),
+    city: City.find_by_name('Salta'), photo_url: "http://s8.tinypic.com/2mzcvnl_th.jpg",
     commerce: Commerce.find_by_name('El Nacional') }
 ])
 

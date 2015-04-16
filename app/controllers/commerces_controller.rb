@@ -68,7 +68,7 @@ class CommercesController < ApplicationController
   private
   
   def commerce_params
-    params.require(:commerce).permit(:name, :user, :tag_list, branches_attributes: [:name, :address, :phone, :type, :city])
+    params.require(:commerce).permit(:name, :user, :tag_list, branches_attributes: [:name, :address, :phone, :type, :city, :photo_url])
   end
   
   def sanitize_page_params

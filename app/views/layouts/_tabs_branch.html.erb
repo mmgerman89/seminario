@@ -1,8 +1,13 @@
 <div class="page-header">
 	<div class="row">
 		<div class="col-xs-8 col-sm-8 col-md-8">
-			<h1 id="branch-title"><%= title %></h1>
-			<h2><%= @branch.name + ' - ' + @branch.commerce.name %></h2>
+			<div class="img-branch">
+				<img src="<%= @branch.photo_url %>" alt="<%= @branch.name %>" width="100px" height="100px"/>
+			</div>
+			<div class="title-branch">
+				<h1 id="branch-title"><%= title %></h1>
+				<h2><%= @branch.commerce.name + ' - ' + @branch.name %></h2>
+			</div>
 		</div>
 		<div class="col-xs-4 col-sm-4 col-md-4">
 			<div id="info_branch"><%= render 'shared/branch_info' %></div>
