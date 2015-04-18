@@ -1,8 +1,11 @@
+<div id="<%= "popup-item-" + item.id.to_s %>" class="white-popup mfp-hide">
+  <%= render layout: 'items/view', locals: {item: item} {} %>
+</div>
 <div class="col-xs-6 col-sm-6 col-md-6">
 	<div class="well">
 		<div class="media">
 			<div class="media-left">
-				<a href="#">
+				<a href="<%= "#popup-item-" + item.id.to_s %>" class="open-popup-link">
 					<img class="media-object" src="<%= item.photo %>" alt="<%= item.name %>" width="100px" height="100px">
 				</a>
 			</div>
@@ -11,7 +14,8 @@
 				<%= item.description %>
 			</div>
 			<div class="item-bottom">
-				<div class="links-branch"><a href="#">Eliminar</a> | <a href="#">Editar</a> | <%= link_to "Ver", item_path(item) %></div> 
+				<div class="links-branch"><%= link_to "Eliminar", item_path(item.id), method: :delete, data: { confirm: "¿Está segurro de eliminar este item?" } %> 
+						| <%= link_to "Editar", edit_item_path(item.id) %> | <a href="<%= "#popup-item-" + item.id.to_s %>" class="open-popup-link">Ver</a></div> 
 				<div class="price-branch"><%= number_to_currency item.price %></div>
 			</div>
 		</div>

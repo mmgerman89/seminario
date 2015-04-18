@@ -58,3 +58,8 @@ gem 'acts-as-taggable-on', '~> 3.4'
 
 #Cocoon
 gem "cocoon"
+
+# Magnific popups
+gem 'magnific-popup-rails'
+
+gem 'jquery-turbolinks'
