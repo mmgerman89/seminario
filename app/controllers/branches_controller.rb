@@ -1,20 +1,19 @@
 #encoding: utf-8
 class BranchesController < ApplicationController
+  before_action :set_branch, only: [:show, :edit, :update]
   before_filter :has_permission, only: [:show, :edit, :update]
   
   def show
-    @branch = Branch.find_by_id(params[:id])
+    @publications = @branch.publications.where("content <> ''")
     session[:branch_id] = @branch.id if @branch
     @publication = @branch.publications.build
   end
   
   def edit
-    @branch = Branch.find_by_id(params[:id])
     session[:return_to] = request.referer
   end
   
   def update
-    @branch = Branch.find_by_id(params[:id])
     if @branch.update(branch_params)
       redirect_to session.delete(:return_to), notice: 'Local actualizado correctamente'
     else
@@ -32,9 +31,13 @@ class BranchesController < ApplicationController
   
   protected
   
+  def set_branch
+    @branch = Branch.find_by_id(params[:id])
+  end
+  
   def has_permission
-    branch = Branch.find_by_id(params[:id])
-    admin = branch.administrators.where(user_id: current_user.id)
+    set_branch
+    admin = @branch.administrators.where(user_id: current_user.id)
     if admin.empty?
       redirect_to root_path, alert: 'No tiene permisos para realizar esta operación'
     end
