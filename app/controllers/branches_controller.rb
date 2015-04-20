@@ -48,6 +48,10 @@ class BranchesController < ApplicationController
     end
   end
   
+  def profile
+    @branch = Branch.find_by_id(params[:id])
+  end
+  
   private
   
   def sanitize_page_params

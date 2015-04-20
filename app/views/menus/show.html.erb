@@ -2,4 +2,12 @@
 	@tabs = Hash.new
 	@tabs["menus"] = "active"
 %>
-<p>En construcción</p>
+<%= render layout: 'layouts/tabs_profile_branch', locals: {title: 'Carta'} {  } %>
+
+<div class="menu">
+	<div class="row">
+		<% @menu.each do |item| %>
+			<%= render layout: 'shared/item_branch', locals: {item: item} {} %>
+		<% end %>
+	</div>
+</div>

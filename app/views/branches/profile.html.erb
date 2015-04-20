@@ -1,0 +1,34 @@
+
+<% if not @branch.nil? %>
+	<%
+		@tabs = Hash.new
+		@tabs["wall"] = "active"
+	%>
+	<%= render layout: 'layouts/tabs_profile_branch', locals: {title: 'Muro'} {  } %>
+	<div class="page-header">
+	  <h1><%= @branch.commerce.name + ' - ' + @branch.name %></h1>
+	</div>
+	<div class="row">
+	 	<div class="col-xs-4 col-sm-4 col-md-4">
+	 		<div align="center">
+				<img src="<%= @branch.photo_url %>" alt="Foto de perfil" width="100px" height="100px" />
+				<p><strong>Reputación</strong></p>
+				<%= button_to "Seguir", "", class: "btn btn-primary" %>
+				<br />
+				<%= render 'shared/branch_info' %>
+				<br />
+			</div>
+		</div>
+	 	<div class="col-xs-8 col-sm-8 col-md-8">
+	 		<h3>Publicaciones</h3>
+	 		<% @publications =  @branch.publications %>
+			<% if @branch.publications.count > 0 %>
+				<%= render 'publications/publication' %>
+			<% else %>
+				<p><strong>No ha publicado nada todavía.</strong></p>
+			<% end %>
+		</div>
+	</div>
+<% else %>
+	<p>¡No existe este local!</p>
+<% end %>

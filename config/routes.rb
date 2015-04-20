@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :commerces
   match '/my_commerces', to: "commerces#my_commerces", via: :get
   resources :branches
+  get '/branch/profile/:id' => "branches#profile", as: "branch_profile"
   resources :publications, only: [:create, :destroy]
   
   resources :menus

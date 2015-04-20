@@ -14,8 +14,14 @@
 				<%= item.description %>
 			</div>
 			<div class="item-bottom">
-				<div class="links-branch"><%= link_to "Eliminar", item_path(item.id), method: :delete, data: { confirm: "¿Está segurro de eliminar este item?" } %> 
-						| <%= link_to "Editar", edit_item_path(item.id) %> | <a href="<%= "#popup-item-" + item.id.to_s %>" class="open-popup-link">Ver</a></div> 
+				<div class="links-branch">
+					<% if action_name == "edit" %>
+						<%= link_to "Eliminar", item_path(item.id), method: :delete, data: { confirm: "¿Está segurro de eliminar este item?" } %> 
+							| <%= link_to "Editar", edit_item_path(item.id) %> | <a href="<%= "#popup-item-" + item.id.to_s %>" class="open-popup-link">Ver</a>
+					<% else %>
+						<%= link_to "¡Pedir!", edit_item_path(item.id) %> | <a href="<%= "#popup-item-" + item.id.to_s %>" class="open-popup-link">Ver</a>
+					<% end %>
+				</div> 
 				<div class="price-branch"><%= number_to_currency item.price %></div>
 			</div>
 		</div>

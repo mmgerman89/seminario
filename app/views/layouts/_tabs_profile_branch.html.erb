@@ -1,0 +1,14 @@
+<ul class="nav nav-tabs nav-justified">
+  <li role="presentation" class="<%= @tabs["wall"] %>">
+  	<a href="<%= @tabs["wall"] == "active" ? "#" : branch_profile_path(@branch.id) %>">Muro</a>
+  </li>
+  <li role="presentation" class="<%= @tabs["menus"] %>">
+  	<a href="<%= @tabs["menus"] == "active" ? "#" : menu_path(@branch.id) %>">Carta</a>
+  </li>
+  <li role="presentation" class="<%= @tabs["orders"] %>">
+  	<a href="<%= @tabs["orders"] == "active" ? "#" : "#" %>">Pedidos On-line</a>
+  <li role="presentation" class="<%= @tabs["reservations"] %>">
+  	<a href="<%= @tabs["reservations"] == "active" ? "#" : "#" %>">Reservas On-line</a>
+</ul>
+
+<br />

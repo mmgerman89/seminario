@@ -5,57 +5,58 @@
 		<div class="page-header">
 		  <h1><%= @commerce.name %></h1>
 		</div>
-		<div class="panel panel-primary">
-		  <div class="panel-heading">Información Básica</div>
-		  <div class="panel-body">
-		  	<!-- Table -->
-			<table class="table">
-				<tr>
-					<td class="col-md-4">Nombre</td>
-					<td class="col-md-8"><%= @commerce.name %></td>
-				</tr>
-				<tr>
-					<td class="col-md-4">Propietario</td>
-					<td class="col-md-8"><%= @commerce.user.first_name + ' ' + @commerce.user.last_name %></td>
-				</tr>
-				<tr>
-					<td class="col-md-4">Categorías</td>
-					<td class="col-md-8"><%= @commerce.tag_list %></td>
-				</tr>
-			</table>
-		  </div>
-		</div>
-		<div align="right">
-			<%= button_to 'Nuevo Local', new_branch_path, method: :get, class: "btn btn-primary" %><br />
-		</div>
-		<div class="panel panel-success">
-		  <div class="panel-heading">Locales</div>
-		  <div class="panel-body">
-		  	<!-- Table -->
-			<table class="table">
-				<thead>
-					<th>Nombre</th>
-					<th>Dirección</th>
-					<th>Teléfono</th>
-					<th></th>
-					<th></th>
-					<th></th>
-				</thead>
-				<tbody>
-					<% @commerce.branches.each do |branch| %>
-						<tr>
-							<td class="col-md-3"><%= branch.name %></td>
-							<td class="col-md-3"><%= branch.address %></td>
-							<td class="col-md-3"><%= branch.phone %></td>
-							<td class="col-md-1"><%= link_to 'Administrar', branch_path(branch.id) %></td>
-							<td class="col-md-1"><%= link_to 'Editar', edit_branch_path(branch.id) %></td>
-							<td class="col-md-1"><%= link_to 'Eliminar', '#' %></td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		  </div>
-		</div>
 		
+			<div class="panel panel-primary">
+			  <div class="panel-heading">Información Básica</div>
+			  <div class="panel-body">
+			  	<!-- Table -->
+				<table class="table">
+					<tr>
+						<td class="col-md-4">Nombre</td>
+						<td class="col-md-8"><%= @commerce.name %></td>
+					</tr>
+					<tr>
+						<td class="col-md-4">Propietario</td>
+						<td class="col-md-8"><%= @commerce.user.first_name + ' ' + @commerce.user.last_name %></td>
+					</tr>
+					<tr>
+						<td class="col-md-4">Categorías</td>
+						<td class="col-md-8"><%= @commerce.tag_list %></td>
+					</tr>
+				</table>
+			  </div>
+			</div>
+			<div align="right">
+				<%= button_to 'Nuevo Local', new_branch_path, method: :get, class: "btn btn-primary" if current_user == @commerce.user%><br />
+			</div>
+			<div class="panel panel-success">
+			  <div class="panel-heading">Locales</div>
+			  <div class="panel-body">
+			  	<!-- Table -->
+				<table class="table">
+					<thead>
+						<th>Nombre</th>
+						<th>Dirección</th>
+						<th>Teléfono</th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</thead>
+					<tbody>
+						<% @commerce.branches.each do |branch| %>
+							<tr>
+								<td class="col-md-3"><%= branch.name %></td>
+								<td class="col-md-3"><%= branch.address %></td>
+								<td class="col-md-3"><%= branch.phone %></td>
+								<td class="col-md-1"><%= link_to 'Ver', branch_profile_path(branch.id) %></td>
+								<td class="col-md-1"><%= link_to 'Administrar', branch_path(branch.id) if current_user == @commerce.user%></td>
+								<td class="col-md-1"><%= link_to 'Editar', edit_branch_path(branch.id) if current_user == @commerce.user%></td>
+								<td class="col-md-1"><%= link_to 'Eliminar', '#' if current_user == @commerce.user%></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			  </div>
+			</div>
 	<% end %>
 </div>
