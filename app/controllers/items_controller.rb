@@ -2,7 +2,7 @@
 class ItemsController < ApplicationController
   before_action :has_permission, only: [:create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_filter :check_for_cancel, onl: [:create, :update]
+  before_filter :check_for_cancel, only: [:create, :update]
   
   def show
     @item = Item.find_by_id(params[:id])
