@@ -25,7 +25,7 @@
 						<% com.branches.each do |branch| %>
 							<tr>
 								<td><%= link_to com.name, commerce_path(com.id) %></td>
-								<td><%= link_to branch.name, branch_path(branch.id) %></td>
+								<td><%= link_to branch.name, branch_profile_path(branch.id) %></td>
 								<td><%= branch.city.province.name %></td>
 								<td><%= branch.city.name %></td>
 							</tr>

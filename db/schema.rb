@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416145019) do
+ActiveRecord::Schema.define(version: 20150421143857) do
 
   create_table "administrators", force: true do |t|
     t.integer  "user_id"
@@ -79,6 +79,31 @@ ActiveRecord::Schema.define(version: 20150416145019) do
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+
+  create_table "order_lines", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "quantity"
+    t.string   "observation"
+    t.decimal  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "unit_price"
+    t.integer  "item_id"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "branch_id"
+    t.string   "address"
+    t.string   "apartment"
+    t.string   "observation"
+    t.decimal  "cash"
+    t.decimal  "shipping_cost"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "subtotal"
+  end
 
   create_table "provinces", force: true do |t|
     t.string   "name"

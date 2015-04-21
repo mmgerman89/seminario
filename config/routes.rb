@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'carts/show'
+
   devise_for :users
   
   get "countries/:country_id/provinces" => "application#provinces", :as => "provinces", :format => :json
@@ -19,10 +21,14 @@ Rails.application.routes.draw do
   resources :commerces
   match '/my_commerces', to: "commerces#my_commerces", via: :get
   resources :branches
+  get '/branch/profile/:id' => "branches#profile", as: "branch_profile"
   resources :publications, only: [:create, :destroy]
   
   resources :menus
   resources :items
+  
+  resource :cart, only: [:show]
+  resources :order_lines, only: [:create, :update, :destroy]
   
   match '/accept_request', to: "friendships#accept_request", via: :post
   match '/cancel_request', to: "friendships#cancel_request", via: :post

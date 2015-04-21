@@ -10,11 +10,10 @@
 			</div>
 		</div>
 		<div class="col-xs-4 col-sm-4 col-md-4">
-			<div id="info_branch"><%= render 'shared/branch_info' %></div>
+			<%= render 'shared/branch_info' %>
 		</div>
 	</div>
 </div>
-<hr />
 <ul class="nav nav-tabs nav-justified">
   <li role="presentation" class="<%= @tabs["wall"] %>">
   	<a href="<%= @tabs["wall"] == "active" ? "#" : branch_path(@branch.id) %>">Muro</a>
@@ -29,10 +28,10 @@
   <li role="presentation" class="<%= @tabs["menus"] %>">
   	<a href="<%= @tabs["menus"] == "active" ? "#" : edit_menu_path(@branch.id) %>">Carta</a>
   </li>
-  <li role="presentation" class="<%= @tabs["orders"] %>">
+  <li role="presentation" class="<%= @tabs["followers"] %>">
   	<a href="<%= @tabs["orders"] == "active" ? "#" : "#" %>">Seguidores</a>
   </li>
-  <li role="presentation" class="<%= @tabs["bookings"] %>">
+  <li role="presentation" class="<%= @tabs["admin"] %>">
   	<a href="<%= @tabs["bookings"] == "active" ? "#" : "#" %>">Administración</a>
   </li>
 </ul>

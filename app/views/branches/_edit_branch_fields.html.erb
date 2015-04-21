@@ -1,0 +1,58 @@
+<div class="form-group">
+	<%= field.label "Nombre de la Sucursal" %>
+	<%= field.text_field :name, class: "form-control" %>
+</div>
+
+<div id="popup-city" class="white-popup mfp-hide">
+	<div class="form-group">
+		<%= field.label "País" %>
+		<%= select_tag :country_id, options_from_collection_for_select(Country.all, 'id', 'name'),
+			class: "form-control", :prompt => "Selecciona un país" %>
+	</div>
+	
+	<div class="form-group">
+		<%= field.label "Provincia" %>
+		<%= select_tag :province_id, options_from_collection_for_select([], 'id', 'name'), class: "form-control",
+			"data-option-dependent" => true,
+			"data-option-observed" => 'country_id',
+			"data-option-url" => "/countries/:country_id:/provinces.json",
+			"data-option-key-method" => :id,
+			"data-option-value-method" => :name,
+			"data-option-message" => "Seleccione una provincia" %>
+	</div>
+	
+	<div class="form-group">
+		<%= field.label "Ciudad" %>
+		<%= field.select :city, options_from_collection_for_select([], 'id', 'name'), {multiple: true},
+			"data-option-dependent" => true,
+			"data-option-observed" => 'province_id',
+			"data-option-url" => "/provinces/:province_id:/cities.json",
+			"data-option-key-method" => :id,
+			"data-option-value-method" => :name,
+			"data-option-message" => "Seleccione una ciudad",
+			:class => "form-control" %>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= field.label "Ciudad:" %>
+	<%= field.text_field :city, value: "#{@branch.city.name} - #{@branch.city.province.name} - #{@branch.city.province.country.name}", 
+		class: "form-control", readonly: true %>
+	<%= link_to 'Cambiar', '#popup-city', class: "open-popup-link" %>
+	
+</div>
+
+<div class="form-group">
+	<%= field.label "Dirección" %>
+	<%= field.text_field :address, class: "form-control" %>
+</div>
+
+<div class="form-group">
+	<%= field.label "Teléfono" %>
+	<%= field.text_field :phone, class: "form-control" %>
+</div>
+
+<div class="form-group">
+	<%= field.label "Foto (URL)" %>
+	<%= field.text_field :photo_url, class: "form-control" %>
+</div>

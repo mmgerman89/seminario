@@ -1,27 +1,29 @@
 #encoding: utf-8
 class CommercesController < ApplicationController
+  before_action :set_commerce, only: [:show, :edit, :update]
   before_filter :sanitize_page_params, only: [:create]
   before_filter :authenticate_user!, only: [:new, :edit, :destroy, :create, :update]
   before_filter :verificate_user, only: [:update]
+  before_filter :check_for_cancel, only: [:create, :update]
   
   def index
     @commerces = Commerce.all
   end
   
   def show
-    @commerce = Commerce.find_by_id(params[:id])
+    session[:commerce_id] = @commerce.id if @commerce
   end
   
   def edit
-    @commerce = Commerce.find_by_id(params[:id])
   end
   
   def update
-    @commerce = Commerce.find_by_id(params[:id])
-    if @commerce.update(commerce_params)
-      redirect_to my_commerces_path, notice: 'Comercio actualizado correctamente'
-    else
-      
+    respond_to do |format|
+      if @commerce.update(commerce_params)
+        format.html { redirect_to my_commerces_path, notice: 'Comercio actualizado correctamente' }
+      else
+        format.html { render :edit, alert: 'No se pudo actualizar el comercio' }
+      end
     end
   end
   
@@ -38,21 +40,13 @@ class CommercesController < ApplicationController
     @commerce.branches.first.address = params[:commerce][:branches][:address]
     @commerce.branches.first.phone = params[:commerce][:branches][:phone]
     
-    if @commerce.save
-      redirect_to my_commerces_path, notice: 'Comercio creado correctamente'
-    else
-      render action: :edit
+    respond_to do |format|
+      if @commerce.save
+        format.html { redirect_to my_commerces_path, notice: 'Comercio creado correctamente' }
+      else
+        format.html { render :new, alert: 'No se pudo crear el commercio' }
+      end
     end
-    
-    #respond_to do |format|
-     # if @commerce.save
-        #format.html { redirect_to root_path, notice: 'Commerce was successfully created.' }
-        #format.json { render :show, status: :created, location: @commerce }
-      #else
-      #  format.html { render :new }
-       # format.json { render json: @commerce.errors, status: :unprocessable_entity }
-      #end
-    #end
   end
   
   def my_commerces
@@ -67,14 +61,15 @@ class CommercesController < ApplicationController
   
   private
   
+  def set_commerce
+    @commerce = Commerce.find_by_id(params[:id])
+  end
+  
   def commerce_params
     params.require(:commerce).permit(:name, :user, :tag_list, branches_attributes: [:name, :address, :phone, :type, :city, :photo_url])
   end
   
   def sanitize_page_params
-    #id = params[:commerce][:branches][:type].to_i
-    #params[:commerce][:branches][:type] = Type.find_by_id(id)
-    
     id = params[:commerce][:branches][:city].to_i
     params[:commerce][:branches][:city] = City.find_by_id(id)
   end
@@ -83,6 +78,12 @@ class CommercesController < ApplicationController
     commerce = Commerce.find_by_id(params[:id])
     if commerce.user != current_user
       redirect_to root_path, alert: 'No tiene permisos para realizar esta acción'
+    end
+  end
+  
+  def check_for_cancel
+    if params[:commit] == "Cancelar"
+      redirect_to my_commerces_path
     end
   end
 end

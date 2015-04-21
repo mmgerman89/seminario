@@ -1,5 +1,5 @@
 
-<%= form_for :branch, url: branches_path do |f| %>
+<%= form_for @branch do |f| %>
 	<% if @branch.errors.any? %>
 		<div id="error_explanation">
 		  <h2><%= pluralize(@branch.errors.count, "error") %> prohibited this branch from being saved:</h2>
@@ -12,32 +12,21 @@
 		</div>
 	<% end %>
 	
-	<div class="form-group">
-		<%= f.label "Nombre del Local" %>
-		<%= f.text_field :name, class: "form-control" %>
-	</div>
-	<div class="form-group">
-		<%= f.label "Dirección" %>
-		<%= f.text_field :address, class: "form-control" %>
-	</div>
-	<div class="form-group">
-		<%= f.label "Teléfono" %>
-		<%= f.text_field :phone, class: "form-control" %>
-	</div>
-	<div class="form-group">
-		<%= f.label "Foto (URL)" %>
-		<%= f.text_field :photo_url, class: "form-control" %>
-	</div>
+	<%= render 'branch_fields', field: f if action_name == "new" %>
+	<%= render 'edit_branch_fields', field: f if action_name == "edit" %>
 	
 	<!-- Registrar Administradores de la Sucursal Principal -->
 	<div class="panel panel-default">
 		<div class="panel-heading">Administradores</div>
 		<div class="panel-body">
 			<%= f.fields_for :administrators do |admin| %>
-				<%= render 'commerces/administrator_fields', field: admin %>
+				<%= render 'administrators/administrator_fields', field: admin %>
 			<% end %>
 		</div>
 	</div>
 	
-	<%= f.submit "Registrar", class: "btn btn-primary" %>
+	<div class="actions">
+		<%= f.submit "Guardar", class: "btn btn-primary" %>
+		<%= f.submit "Cancelar", class: "btn btn-danger" %>
+	</div>
 <% end %>

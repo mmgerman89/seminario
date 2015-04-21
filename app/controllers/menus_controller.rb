@@ -5,6 +5,7 @@ class MenusController < ApplicationController
   def show
     @branch = Branch.find_by_id(session[:branch_id])
     @menu = @branch.items
+    @order_line = current_order.order_lines.new
   end
   
   def edit
