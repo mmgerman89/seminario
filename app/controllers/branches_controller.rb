@@ -49,6 +49,7 @@ class BranchesController < ApplicationController
   end
   
   def profile
+    session[:branch_id] = params[:id]
     @branch = Branch.find_by_id(params[:id])
   end
   

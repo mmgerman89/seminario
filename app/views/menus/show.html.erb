@@ -3,7 +3,7 @@
 	@tabs["menus"] = "active"
 %>
 <%= render layout: 'layouts/tabs_profile_branch', locals: {title: 'Carta'} {  } %>
-
+<h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
 <div class="menu">
 	<div class="row">
 		<% @menu.each do |item| %>
@@ -11,3 +11,4 @@
 		<% end %>
 	</div>
 </div>
+

@@ -1,0 +1,21 @@
+<% if !@order_line.nil? && @order_line.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @order_line.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if @order_lines.size == 0 %>
+  <p class="text-center">
+    Todavía no has pedido nada. <%= link_to "Volvé a la carta", menu_path(session[:branch_id]) %> y prepará tu pedido.
+  </p>
+<% else %>
+	<p class="text-center">
+	    Quiero <%= link_to "agregar más", menu_path(session[:branch_id]) %>.
+	</p>
+  <% @order_lines.each do |order_line| %>
+    <%= render 'carts/cart_row', item: order_line.item, order_line: order_line, show_total: true %>
+  <% end %>
+<% end %>

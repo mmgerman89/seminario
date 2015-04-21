@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   # Configure permited parameters for the sign_up and
   # account_update Devise actions
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
+  helper_method :current_order
   
   def provinces
     country = Country.find(params[:country_id])
@@ -33,6 +34,14 @@ class ApplicationController < ActionController::Base
   
   def suggested_commerces
     @commerces = Commerce.all
+  end
+  
+  def current_order
+    if !session[:order_id].nil?
+      Order.find(session[:order_id])
+    else
+      Order.new
+    end
   end
   
   protected
