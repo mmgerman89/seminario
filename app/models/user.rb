@@ -29,7 +29,21 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :sex, presence: true
   
+  before_save :set_profile_picture
+  
   def name
     self[:first_name] + ' ' + self[:last_name]
+  end
+  
+  private
+  
+  def set_profile_picture
+    if self[:photo_url].empty?
+      if self[:sex_id] == 1
+        self[:photo_url] = "/img/signup_male.jpg"
+      else
+        self[:photo_url] = "/img/signup_female.png"
+      end
+    end
   end
 end
