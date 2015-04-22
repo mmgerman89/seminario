@@ -10,21 +10,11 @@
 	</div>
 	<div class="row">
 	  <div class="col-xs-12 col-sm-6 col-md-8">
-		<ul>
+		<div class="row">
 			<% @friends.each do |friend| %>
-				<div class="media">
-				  <div class="media-left media-middle">
-				    <a href="#">
-				      <img class="media-object" src="<%= friend.photo_url %>" alt="Foto de perfil">
-				    </a>
-				  </div>
-				  <div class="media-body">
-				    <h4 class="media-heading"><%= friend.first_name + ' ' + friend.last_name %></h4>
-				    <p><%= link_to "Quitar", unfriend_path(friend_id: friend), method: :post, data: { confirm: '¿Está seguro de eliminar a este amigo?'} %></p>
-				  </div>
-				</div>
+				<%= render layout: "display_friend", locals: { friend: friend } { } %>
 			<% end %>
-		</ul>
+		</div>
 	  </div>
 	  <div class="col-xs-6 col-md-4">
 	  	<%= render 'shared/pending_requests' %>

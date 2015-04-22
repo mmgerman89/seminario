@@ -7,7 +7,7 @@ class CommercesController < ApplicationController
   before_filter :check_for_cancel, only: [:create, :update]
   
   def index
-    @commerces = Commerce.all
+    @commerces = Commerce.all.order(:name)
   end
   
   def show

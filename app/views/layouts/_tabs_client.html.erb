@@ -7,13 +7,13 @@
   	<a href="<%= @tabs["friends"] == "active" ? "#" : friendships_path %>">Amigos <span class="badge"><%= "#{@requests}" if @requests != 0 %></span></a>
   </li>
   <li role="presentation" class="<%= @tabs["commerces"] %>">
-  	<a href="<%= @tabs["commerces"] == "active" ? "#" : "#" %>">Comercios</a>
+  	<a href="<%= @tabs["commerces"] == "active" ? "#" : commerces_followed_path %>">Comercios</a>
   </li>
   <li role="presentation" class="<%= @tabs["orders"] %>">
-  	<a href="<%= @tabs["orders"] == "active" ? "#" : "#" %>">Pedidos</a>
+  	<a href="<%= @tabs["orders"] == "active" ? "#" : my_orders_path %>">Pedidos</a>
   </li>
   <li role="presentation" class="<%= @tabs["bookings"] %>">
-  	<a href="<%= @tabs["bookings"] == "active" ? "#" : "#" %>">Reservas</a>
+  	<a href="<%= @tabs["bookings"] == "active" ? "#" : my_bookings_path %>">Reservas</a>
   </li>
   <li role="presentation" class="<%= @tabs["config"] %>">
   	<a href="<%= @tabs["config"] == "active" ? "#" : edit_user_registration_path %>">Configuración</a>

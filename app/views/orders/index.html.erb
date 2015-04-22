@@ -1,0 +1,102 @@
+<%
+	@tabs = Hash.new
+	@tabs["orders"] = "active"
+%>
+<%= render layout: 'layouts/tabs_branch', locals: {title: 'Pedidos On-line'} {  } %>
+
+<div class="row">
+	<div class="col-xs-6 col-sm-6 col-md-6">
+		<% if orders > 0 %>
+		<h2>Pedidos pendientes</h2>
+			<% @pending_orders.each do |po| %>
+				<div class="panel panel-default">
+				  <div class="panel-heading" id="branch-panel-heading"><h3 class="panel-title" align="center">Pedido #<%= po.id %> (Pendiente)</h3></div>
+				  <div class="panel-body" id="branch-panel-body">
+				  	<table>
+				  		<tr><td>Usuario </td> <td><strong><%= po.user.name %></strong></td></tr>
+				  		<tr><td>Dirección: </td> <td><strong><%= po.address %></strong></td></tr>
+				  		<tr><td>Departamento: </td> <td><strong><%= po.apartment %></strong></td></tr>
+				  		<tr><td>Teléfono: </td> <td><strong><%= po.phone %></strong></td></tr>
+				  		<tr><td>Nota: </td> <td><strong><%= po.observation %></strong></td></tr>
+				  		<tr><td>Paga con: </td> <td><span style="color: green"><strong><%= number_to_currency po.cash %></strong></span></td></tr>
+				  		<tr><td>Total: </td> <td><span style="color: blue"><strong><%= number_to_currency po.subtotal %></strong></span></td></tr>
+				  		<tr><td>Cambio: </td> <td><span style="color: red"><strong><%= number_to_currency(po.cash - po.subtotal) %></strong></span></td></tr>
+				  	</table>
+				  </div>
+				  <div class="panel-footer">
+				  	<ul class="list-group">
+					  <% po.order_lines.each do |line| %>
+					  	<li class="list-group-item">
+						  	<div class="row">
+							  	<div class="col-xs-6 col-sm-6 col-md-6">
+								  	<p><%= line.quantity.to_s + ' ' + line.item.name %></p>
+								  	<p>Nota: <%= line.observation %></p>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6" align="right">
+								  	<p>Precio unitario: <%= number_to_currency line.unit_price %></p>
+								  	<p>Subtotal: <%= number_to_currency line.amount %></p>
+								</div>
+								<hr />
+							</div>
+						</li>
+					  <% end %>
+					 </ul>
+					  <%= form_for po do |f| %>
+					  	<%= f.hidden_field :id, value: po.id %>
+					  	<div class="actions">
+					  		<div class="row">
+							  	<div class="col-xs-6 col-sm-6 col-md-6">
+									<%= f.submit "Confirmar", class: "btn btn-primary", data: { confirm: "¿Está seguro de confirmar el pedido? ¿No olvidaste nada?" } %>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6" align="right">
+									<%= f.submit "Rechazar", class: "btn btn-danger", data: { confirm: "¿Está seguro de rechazar este pedido?" } %>
+								</div>
+							</div>
+					  <% end %>
+					  </div>
+				  </div>
+				</div>	
+			<% end %>
+		<% else %>
+			<p>No existen pedidos pendientes</p>
+		<% end %>
+	</div>
+	
+	<div class="col-xs-6 col-sm-6 col-md-6">
+		<h2>Pedidos enviados</h2>
+		<% @sent_orders.each do |po| %>
+				<div class="panel panel-default">
+				  <div class="panel-heading" id="branch-panel-heading"><h3 class="panel-title" align="center">Pedido #<%= po.id %> (Enviado)</h3></div>
+				  <div class="panel-body" id="branch-panel-body">
+				  	<table>
+				  		<tr><td>Usuario </td> <td><strong><%= po.user.name %></strong></td></tr>
+				  		<tr><td>Dirección: </td> <td><strong><%= po.address %></strong></td></tr>
+				  		<tr><td>Departamento: </td> <td><strong><%= po.apartment %></strong></td></tr>
+				  		<tr><td>Teléfono: </td> <td><strong><%= po.phone %></strong></td></tr>
+				  		<tr><td>Nota: </td> <td><strong><%= po.observation %></strong></td></tr>
+				  		<tr><td>Paga con: </td> <td><span style="color: green"><strong><%= number_to_currency po.cash %></strong></span></td></tr>
+				  		<tr><td>Total: </td> <td><span style="color: blue"><strong><%= number_to_currency po.subtotal %></strong></span></td></tr>
+				  		<tr><td>Cambio: </td> <td><span style="color: red"><strong><%= number_to_currency(po.cash - po.subtotal) %></strong></span></td></tr>
+				  	</table>
+				  </div>
+				  <div class="panel-footer">
+				  	<ul class="list-group">
+					  <% po.order_lines.each do |line| %>
+					  	<li class="list-group-item">
+						  	<div class="row">
+							  	<div class="col-xs-6 col-sm-6 col-md-6">
+								  	<p><%= line.quantity.to_s + ' ' + line.item.name %></p>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6" align="right">
+								  	<p>Nota: <%= line.observation %></p>
+								</div>
+								<hr />
+							</div>
+						</li>
+					  <% end %>
+					 </ul>
+				  </div>
+				</div>	
+			<% end %>
+	</div>
+</div>

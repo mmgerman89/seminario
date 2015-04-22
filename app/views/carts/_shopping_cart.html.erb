@@ -7,15 +7,80 @@
     </ul>
   </div>
 <% end %>
-<% if @order_lines.size == 0 %>
+<% if @order_lines.nil? or @order_lines.size == 0 %>
   <p class="text-center">
     Todavía no has pedido nada. <%= link_to "Volvé a la carta", menu_path(session[:branch_id]) %> y prepará tu pedido.
   </p>
 <% else %>
+	<% @order_lines.each do |order_line| %>
+		<%= render 'carts/cart_row', item: order_line.item, order_line: order_line, show_total: true %>
+	<% end %>
+	
 	<p class="text-center">
-	    Quiero <%= link_to "agregar más", menu_path(session[:branch_id]) %>.
+	    <%= link_to "Quiero agregar más", menu_path(session[:branch_id]), class: "btn btn-primary" %>
 	</p>
-  <% @order_lines.each do |order_line| %>
-    <%= render 'carts/cart_row', item: order_line.item, order_line: order_line, show_total: true %>
-  <% end %>
+	
+	<h2 class="text-center">
+		Total: <span style="color: blue"><%= number_to_currency current_order.subtotal %></span>
+	</h2>
+	
+	<div class="well">
+		<div class="row">
+			<%= form_for current_order do |f| %>
+				<% if current_order.errors.any? %>
+					<div id="error_explanation">
+					  <h2><%= pluralize(current_order.errors.count, "error") %> prohibited this branch from being saved:</h2>
+					
+					  <% current_order.errors.full_messages.each do |message| %>
+					    <div class="alert alert-danger" role="alert">
+					    	<p><%= message %></p>
+					    </div>
+					  <% end %>
+					</div>
+				<% end %>
+	
+				<div class="col-xs-4 col-sm-4 col-md-4">
+					<h3>Envío</h3><br />
+					<p><strong>Usuario</strong></p>
+					<p><%= current_order.user.first_name + " " + current_order.user.last_name %></p><br />
+					<p><strong>Ciudad</strong></p> 
+					<p><%= current_order.branch.city.name + " - " + current_order.branch.city.province.name + " - " + current_order.branch.city.province.country.name %></p>
+					<br />
+				</div>
+			
+				<div class="col-xs-8 col-sm-8 col-md-8">
+				
+					<div class="form-group">
+				      <%= f.label "Calle" %>
+				      <%= f.text_field :address, value: current_order.address, class: "form-control" %>
+				    </div>
+				    
+				    <div class="form-group">
+				      <%= f.label "Departamento (opcional)" %>
+				      <%= f.text_field :apartment, value: current_order.apartment, class: "form-control" %>
+				    </div>
+				    
+				    <div class="form-group">
+				      <%= f.label "Teléfono" %>
+				      <%= f.text_field :phone, value: current_order.phone, class: "form-control" %>
+				    </div>
+				    
+				    <div class="form-group">
+				      <%= f.label "Nota" %>
+				      <%= f.text_field :observation, value: current_order.observation, class: "form-control" %>
+				    </div>
+				    
+				    <div class="form-group">
+				      <%= f.label "Pago con" %>
+				      <%= f.text_field :cash, value: current_order.cash, class: "form-control" %>
+				    </div>
+					
+					<div class="actions">
+						<%= f.submit "¡Listo!", class: "btn btn-primary", data: { confirm: "¿Está seguro de enviar el pedido? ¿No olvidaste nada?" } %>
+						<%= f.submit "Cancelar", class: "btn btn-danger", data: { confirm: "¿Está seguro de cancelar el pedido?" } %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
 <% end %>

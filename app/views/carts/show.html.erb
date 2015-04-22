@@ -1,3 +1,8 @@
+<%
+	@tabs = Hash.new
+	@tabs["orders"] = "active"
+%>
+<%= render layout: 'layouts/tabs_profile_branch', locals: {title: 'Pedido On-line'} {  } %>
 <div class="shopping-cart">
   <%= render "shopping_cart" %>
 </div>

@@ -1,9 +1,9 @@
 <div class="panel panel-primary">
 	<div class="panel-heading" align="center"><strong>Pedidos On-line</strong></div>
 	<div class="panel-body" align="center">
-		<% if true %>
+		<% if orders > 0 %>
 			<h3>¡Atención!</h3>
-			<p>¡Tiene <strong>3</strong> pedidos nuevos! <a href="#">Atender ahora.</a></p>
+			<p>¡Tiene <strong><%= orders %></strong> pedidos nuevos! <a href="#">Atender ahora.</a></p>
 		<% else %>
 			<p>No tiene pedidos nuevos.</p>
 		<% end %>

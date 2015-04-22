@@ -59,11 +59,16 @@ class ItemsController < ApplicationController
   end
   
   def has_permission
-    @branch = Branch.find_by_id(session[:branch_id])
+    @branch = current_branch
     admin = @branch.administrators.where(user_id: current_user.id)
-    set_item
-    item = @branch.items.where(id: @item.id)
-    if admin.empty? or item.empty?
+    if action_name == "edit"
+      set_item
+      item = @branch.items.where(id: @item.id)
+      not_branch_item = item.empty?
+    else
+      not_branch_item = false
+    end
+    if admin.empty? or not_branch_item
       redirect_to root_path, alert: 'No tiene permisos para realizar esta operación'
     end
   end

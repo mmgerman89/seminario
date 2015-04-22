@@ -13,11 +13,12 @@
 		    <p class="state-foot"><%= p.created_at %></p>
 		  </div>
 		  <div class="media-right">
-			<% if current_user.id == p.user_id %>
-				<%= link_to "x", p, method: :delete, class: "btn btn-danger",
-											data: {confirm: "¿Estás seguro?"} %>
-			<% else %>
-			
+		  	<% if user_signed_in? %>
+				<% if current_user.id == p.user_id %>
+					<%= link_to "x", p, method: :delete, class: "btn btn-danger",
+												data: {confirm: "¿Estás seguro?"} %>
+				<% else %>
+				<% end %>
 			<% end %>
 		  </div>
 		</div>

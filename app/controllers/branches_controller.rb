@@ -4,6 +4,7 @@ class BranchesController < ApplicationController
   before_filter :sanitize_page_params, only: [:create, :update]
   before_filter :has_permission, only: [:show, :edit, :update]
   before_filter :check_for_cancel, only: [:create, :update]
+  before_filter :user_signed_in?, only: [:profile]
   
   def show
     @publications = @branch.publications.where("content <> ''")

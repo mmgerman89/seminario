@@ -11,8 +11,7 @@
 				<%= nav_link "Inicio", 		root_path %>
 				<%= nav_link "Comercios", 	commerces_path %>
 				<%= nav_link "Ayuda", 		help_path %>
-				<%= nav_link "Acerca de", 	about_path %>
-				<%= nav_link "Contacto", 	contact_path %>
+				<%= nav_link "Acerca de RestOnLine", 	about_path %>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<% if user_signed_in? %>
@@ -21,7 +20,6 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cuenta <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><%= link_to "Editar cuenta", edit_user_registration_path %></li>
-							<li><a href="#">Privacidad</a></li>
 							<li class="divider"></li>
 							<li><%= link_to "Mis comercios", my_commerces_path %></li>
 							<li class="divider"></li>

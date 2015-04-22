@@ -15,23 +15,24 @@
 			</div>
 			<div class="item-bottom">
 				<div class="links-branch">
-					<% if action_name == "edit" %>
-						<%= link_to "Eliminar", item_path(item.id), method: :delete, data: { confirm: "¿Está segurro de eliminar este item?" } %> 
-							| <%= link_to "Editar", edit_item_path(item.id) %> | <a href="<%= "#popup-item-" + item.id.to_s %>" class="open-popup-link">Ver</a>
-					<% else %>
-						
-						<%= form_for @order_line, remote: true do |f| %>
-					      <h4 class="text-right">Precio: <span style="color: green"><%= number_to_currency item.price %></span></h4>
-					        <div class="input-group">
-					          <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
-					          <div class="input-group-btn">
-					            <%= f.hidden_field :item_id, value: item.id %>
-					            <%= f.submit "¡Pedir ahora!", class: "btn btn-primary" %>
-					          </div>
-					        </div>
-					      <% end %>
+					<% if user_signed_in? %>
+						<% if action_name == "edit" %>
+							<%= link_to "Eliminar", item_path(item.id), method: :delete, data: { confirm: "¿Está segurro de eliminar este item?" } %> 
+								| <%= link_to "Editar", edit_item_path(item.id) %> | <a href="<%= "#popup-item-" + item.id.to_s %>" class="open-popup-link">Ver</a>
+							<h4 class="text-right">Precio: <span style="color: green"><%= number_to_currency item.price %></span></h4>
+						<% else %>
+							<%= form_for @order_line, remote: true do |f| %>
+						      <h4 class="text-right">Precio: <span style="color: green"><%= number_to_currency item.price %></span></h4>
+						        <div class="input-group">
+						          <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+						          <div class="input-group-btn">
+						            <%= f.hidden_field :item_id, value: item.id %>
+						            <%= f.submit "¡Pedir ahora!", class: "btn btn-primary" %>
+						          </div>
+						        </div>
+						    <% end %>
 						<% end %>
-						
+					<% end %>
 				</div> 
 			</div>
 		</div>

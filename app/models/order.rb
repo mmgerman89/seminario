@@ -21,7 +21,7 @@ class Order < ActiveRecord::Base
   private
   
   def set_order_status
-    self.status = "In progress"
+    self.status = "En progreso"
   end
   
   def update_subtotal

@@ -11,6 +11,17 @@ Rails.application.routes.draw do
   match '/help',      to: 'static_pages#help', via: :get
   match '/about',     to: 'static_pages#about', via: :get
   match '/contact',   to: 'static_pages#contact', via: :get
+  
+  match '/commerces_followed',   to: 'static_pages#commerces_followed', via: :get
+  match '/my_orders',   to: 'static_pages#my_orders', via: :get
+  match '/my_bookings',   to: 'static_pages#my_bookings', via: :get
+  
+  match '/bookings',   to: 'static_pages#bookings', via: :get
+  
+  match '/commerce_reviews',   to: 'static_pages#commerce_reviews', via: :get
+  match '/commerce_bookings',   to: 'static_pages#commerce_bookings', via: :get
+  match '/commerce_followers',   to: 'static_pages#commerce_followers', via: :get
+  match '/commerce_admin',   to: 'static_pages#commerce_admin', via: :get
 
   resources :users
   resources :microposts, only: [:create, :destroy]
@@ -28,6 +39,8 @@ Rails.application.routes.draw do
   resources :items
   
   resource :cart, only: [:show]
+  resource :order, only: [:update]
+  resources :orders, only: [:index]
   resources :order_lines, only: [:create, :update, :destroy]
   
   match '/accept_request', to: "friendships#accept_request", via: :post

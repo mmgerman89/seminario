@@ -1,4 +1,5 @@
 class OrderLinesController < ApplicationController
+  before_filter :authenticate_user!, only: [:create, :update, :destroy]
     
   def create
     @order = current_order
@@ -12,6 +13,8 @@ class OrderLinesController < ApplicationController
     @order_line = @order.order_lines.find(params[:id])
     @order_line.update_attributes(order_line_params)
     @order_lines = @order.order_lines
+    @order.save
+    session[:order_id] = @order.id
   end
   
   def destroy
@@ -19,6 +22,8 @@ class OrderLinesController < ApplicationController
     @order_line = @order.order_lines.find(params[:id])
     @order_line.destroy
     @order_lines = @order.order_lines
+    @order.save
+    session[:order_id] = @order.id
   end
   
 private

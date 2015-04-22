@@ -1,0 +1,19 @@
+<div class="col-xs-6 col-sm-6 col-md-6">
+	<div class="well">
+		<div class="media">
+		  <div class="media-left media-middle">
+		    <a href="#">
+		      <img class="media-object" src="<%= friend.photo_url %>" alt="Foto de perfil">
+		    </a>
+		  </div>
+		  <div class="media-body">
+		    <h4 class="media-heading"><%= friend.name %></h4>
+		    <p> 
+		    	<%= link_to "Ver Perfil", "#" %>
+		    <br />
+		    	<%= link_to "Quitar", unfriend_path(friend_id: friend), method: :post, data: { confirm: '¿Está seguro de eliminar a este amigo?'} %>
+		    </p>
+		  </div>
+		</div>
+	</div>
+</div>
