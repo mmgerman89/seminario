@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -61,50 +63,64 @@ cities = City.create([
 
 # Datos de ejemplo
 users = User.create([
+    { email: "german@martinez.com", first_name: "Germán", last_name: "Martínez",
+    password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino"),
+    photo_url: "/img/1.jpg"},
     { email: "ned@stark.com", first_name: "Ned", last_name: "Stark",
     password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino"),
-    photo_url: "http://s8.tinypic.com/2yodamt_th.jpg"},
+    photo_url: "/img/2.jpg"},
     { email: "catelyn@stark.com", first_name: "Catelyn", last_name: "Stark",
     password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Femenino"),
-    photo_url: "http://s8.tinypic.com/16gwnr_th.jpg"},
+    photo_url: "/img/3.jpg"},
     { email: "jon@snow.com", first_name: "Jon", last_name: "Snow",
     password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino"),
-    photo_url: "http://s8.tinypic.com/2yodamt_th.jpg"},
+    photo_url: "/img/4.png"},
     { email: "tyrion@lannister.com", first_name: "Tiryon", last_name: "Lannister",
     password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino"),
-    photo_url: "http://s8.tinypic.com/2yodamt_th.jpg"},
+    photo_url: "/img/5.jpg"},
     { email: "robert@baratheon.com", first_name: "Robert", last_name: "Baratheon",
     password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino"),
-    photo_url: "http://s8.tinypic.com/2yodamt_th.jpg"},
+    photo_url: "/img/6.jpg"},
     { email: "danny@targaryen.com", first_name: "Danny", last_name: "Targaryen",
     password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Femenino"),
-    photo_url: "http://s8.tinypic.com/16gwnr_th.jpg"},
-    { email: "rob@arryn.com", first_name: "Robb", last_name: "Arryn",
+    photo_url: "/img/7.jpg"},
+    { email: "khal@drogo.com", first_name: "Khal", last_name: "Drogo",
     password: "asdasdasd", password_confirmation: "asdasdasd", sex: Sex.find_by_name("Masculino"),
-    photo_url: "http://s8.tinypic.com/2yodamt_th.jpg"}
+    photo_url: "/img/8.jpg"}
 ])
 
 commerce = Commerce.create([
   { name: 'Mak Lucas', user: User.first },
-  { name: 'El Nacional', user: User.second }
+  { name: 'El Nacional', user: User.last }
 ])
 
 branches = Branch.create([
-  { name: '3C', address: 'Virrey Toledo 1354', phone: '(0387) 4215239',
-    city: City.find_by_name('Salta'), photo_url: "http://s8.tinypic.com/oaxij6_th.jpg",
+  { name: 'Tres Cerritos', address: 'Virrey Toledo 1354', phone: '(0387) 4215239',
+    city: City.find_by_name('Salta'), photo_url: "/img/maklucas.jpg",
     commerce: Commerce.find_by_name('Mak Lucas') },
   { name: 'El Tribuno', address: 'Barrio el Tribuno', phone: '(0387) 4225588',
-    city: City.find_by_name('Salta'), photo_url: "http://s8.tinypic.com/oaxij6_th.jpg",
+    city: City.find_by_name('Salta'), photo_url: "/img/maklucas.jpg",
     commerce: Commerce.find_by_name('Mak Lucas') },
   { name: 'El Nacional I', address: 'Virrey Toledo 256', phone: '(0387) 4336699',
-    city: City.find_by_name('Salta'), photo_url: "http://s8.tinypic.com/2mzcvnl_th.jpg",
+    city: City.find_by_name('Salta'), photo_url: "/img/elnacional.jpg",
     commerce: Commerce.find_by_name('El Nacional') }
 ])
 
 admins = Administrator.create([
-  { user: User.first, branch: Branch.find_by_name('3C')},
+  { user: User.first, branch: Branch.find_by_name('Tres Cerritos')},
   { user: User.first, branch: Branch.find_by_name('El Tribuno')},
-  { user: User.second, branch: Branch.find_by_name('El Nacional I')}
+  { user: User.last, branch: Branch.find_by_name('El Nacional I')}
+])
+
+items = Item.create([
+  { name: "Hamburguesa", description: "Hamburguesa Paty en pan Bimbo con aderezos e ingredientes a elección",
+    price: 35.3, photo: "/img/hamburguesa.jpg", branch: Branch.first },
+  { name: "Lomito", description: "Lomito de ternera o cerdo en pan comun o arabe",
+    price: 37.5, photo: "/img/lomito.jpg", branch: Branch.first },
+  { name: "Pizza Fugazzeta", description: "Pizza con mucha cebolla dorada y cruda. Con queso muzzarella",
+    price: 65.5, photo: "/img/fugazzeta.jpg", branch: Branch.first },
+  { name: "Cerveza Corona x 350ml.", description: "Cerveza Corona importada de primer nivel. Botella de 350 ml.",
+    price: 26.65, photo: "/img/cerveza.jpg", branch: Branch.first }
 ])
 
 
