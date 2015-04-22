@@ -89,6 +89,16 @@ users = User.create([
     photo_url: "/img/8.jpg"}
 ])
 
+mircoposts = Micropost.create([
+    { content: "Bienvenidos a RestOnLine!", user: User.first },
+    { content: "Winter is coming!", user: User.second },
+    { content: "Dónde están mis dragones???", user: User.find_by_first_name("Danny") },
+    { content: "Bran! No trepes más las paredes...", user: User.find_by_first_name("Catelyn") },
+    { content: "Una mente necesita libros, así como una espada necesito ser afilada", user: User.find_by_first_name("Tyrion") },
+    { content: "Mi luna y estrellas", user: User.find_by_first_name("Khal") },
+    { content: "Ah! No sé nada yo...", user: User.find_by_first_name("Jon") }
+])
+
 commerce = Commerce.create([
   { name: 'Mak Lucas', user: User.first },
   { name: 'El Nacional', user: User.last }
