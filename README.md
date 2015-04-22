@@ -9,7 +9,7 @@ En este repositorio se encuentra el código de un prototipo para una **Red Socia
 Prototipo
 -------------
 
-Para acceder al prototipo funcionando (sin necesidad de instalar nada en su máquina) puede dirigirse al siguiente link: http://restonline.herokuapp.com/
+Para acceder al prototipo funcionando (sin necesidad de instalar nada en su máquina) puede dirigirse al siguiente link: (próximamente)
 
 > **Nota:**
 
