@@ -15,14 +15,15 @@ class OrdersController < ApplicationController
   end
   
   def update
-    @order = current_order
+    @order = current_order if params[:commit] != "Confirmar" and params[:commit] != "Rechazar"
     respond_to do |format|
       if @order.update_attributes(order_params)
-        @order.status = "Pendiente"
+        @order.status = "Pendiente" if params[:commit] != "Confirmar" and params[:commit] != "Rechazar"
+        @order.cash = 0 if @order.cash.nil?
         @order.save
         session.delete(:order_id)
-        format.html { redirect_to menu_path(session[:branch_id]) if params[:commit] != "Confirmar" 
-                      redirect_to orders_path if params[:commit] == "Confirmar" }  # Cambiar por pedidos eviados
+        format.html { redirect_to menu_path(session[:branch_id]) if params[:commit] != "Confirmar" and params[:commit] != "Rechazar"
+                      redirect_to orders_path if params[:commit] == "Confirmar" or params[:commit] == "Rechazar" }  # Cambiar por pedidos eviados
       else
         format.html { redirect_to cart_path }
       end
@@ -56,10 +57,9 @@ class OrdersController < ApplicationController
   
   def check_for_reject
     if params[:commit] == "Rechazar"
-      @order = current_order
+      @order = Order.find_by_id(params[:order][:id])
       @order.status = "Rechazado"
       @order.save
-      redirect_to branch_profile_path(session[:branch_id])
     end
   end
   
