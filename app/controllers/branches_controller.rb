@@ -29,19 +29,19 @@ class BranchesController < ApplicationController
   
   def new
     @branch = Branch.new
-    @branch.administrators.build
     @province_id = 0
     @country_id = 0
   end
   
   def create
     @branch = Branch.new(branch_params)
-    admin = Administrator.new(user: current_user, branch: @branch)
     @branch.city = City.find_by_id(params[:branch][:city])
     @branch.commerce = Commerce.find_by_id(session[:commerce_id])
+    
     respond_to do |format|
       if @branch.save
-        admin.save!
+        @admin = @branch.administrators.new(user: current_user)
+        @branch.save!
         format.html { redirect_to branch_path(@branch.id), notice: 'Local creado correctamente' }
       else
         format.html { render :new, alert: 'No se pudo crear el local' }

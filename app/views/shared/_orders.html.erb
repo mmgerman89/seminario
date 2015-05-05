@@ -3,7 +3,7 @@
 	<div class="panel-body" align="center">
 		<% if orders > 0 %>
 			<h3>¡Atención!</h3>
-			<p>¡Tiene <strong><%= orders %></strong> pedidos nuevos! <a href="#">Atender ahora.</a></p>
+			<p>¡Tiene <strong><%= orders %></strong> pedidos nuevos! <%= link_to "Atender ahora", orders_path %></a></p>
 		<% else %>
 			<p>No tiene pedidos nuevos.</p>
 		<% end %>
