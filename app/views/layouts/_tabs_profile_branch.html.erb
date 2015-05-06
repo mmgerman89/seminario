@@ -22,7 +22,7 @@
   	<a href="<%= @tabs["menus"] == "active" ? "#" : menu_path(@branch.id) %>">Carta</a>
   </li>
   <li role="presentation" class="<%= @tabs["orders"] %>">
-  	<a href="<%= @tabs["orders"] == "active" ? "#" : cart_path %>">Pedido On-line <span class="badge"><%= number_to_currency current_order.subtotal if current_order.subtotal > 0  %></span></a>
+  	<a href="<%= @tabs["orders"] == "active" ? "#" : cart_path %>">Pedido On-line <span class="badge" id="total"><%= number_to_currency current_order.subtotal if current_order.subtotal > 0  %></span></a>
   <li role="presentation" class="<%= @tabs["reservations"] %>">
   	<a href="<%= @tabs["reservations"] == "active" ? "#" : bookings_path %>">Reserva On-line</a>
 </ul>

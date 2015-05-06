@@ -1,5 +1,7 @@
 <% if @order.errors.any? || @order_line.errors.any? %>
 	alert("not valid.")
 <% else %>
-	$(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>")
+	$(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>");
+	$("#total").html("<%= escape_javascript(render 'layouts/cart_total') %>");
+	document.getElementById("closeModal_<%= @order_line.item.id %>").click();
 <% end %>

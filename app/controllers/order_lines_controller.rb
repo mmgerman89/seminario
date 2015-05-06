@@ -1,11 +1,22 @@
 class OrderLinesController < ApplicationController
   before_filter :authenticate_user!, only: [:create, :update, :destroy]
     
+  def index
+    @order_line = OrderLine.new
+  end
+    
   def create
     @order = current_order
     @order_line = @order.order_lines.new(order_line_params)
-    @order.save
-    session[:order_id] = @order.id
+    
+    respond_to do |format|
+      if @order.save
+        session[:order_id] = @order.id
+        format.html { redirect_to menu_path, notice: "Agregado al pedido" }
+        format.json { render action: 'create', status: :created, location: :order }
+        format.js { render action: 'create', status: :created, location: :order }
+      end
+    end
   end
   
   def update
