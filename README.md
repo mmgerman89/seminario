@@ -8,9 +8,9 @@ En este repositorio se encuentra el código de un prototipo para una **Red Socia
 
 Enlaces
 -------------
-Informe final: [https://dl.dropboxusercontent.com/u/30535816/seminario/Informe%20Final.pdf]
+Informe final: https://dl.dropboxusercontent.com/u/30535816/seminario/Informe%20Final.pdf
 
-Presentación (requiere navegador actualizado): [https://dl.dropboxusercontent.com/u/30535816/seminario/presentacion/index.html]
+Presentación (requiere navegador actualizado): https://dl.dropboxusercontent.com/u/30535816/seminario/presentacion/index.html
 
 Prototipo
 -------------
